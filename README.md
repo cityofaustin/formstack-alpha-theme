@@ -12,10 +12,14 @@ We also gain the benefit of using our own developer IDEs and external libraries 
 The generated Header HTML is located at [build/alpha_theme_header.html](build/alpha_theme_header.html)
 
 If you want to use it, copy and paste it into the "Header HTML" under the "Advanced Code Editor" in you Theme Editor.
-!["Header HTML tab"](docs/images/header_html_tab.png)
+<img
+src="docs/images/header_html_tab.png"
+alt-text="Header HTML tab" width="400" >
 
 Then enable it by entering "Save and activate" under "Save Changes".
-!["Save and activate"](docs/images/save_and_activate.png)
+<img
+src="docs/images/save_and_activate.png"
+alt-text="Save and activate" width="400" >
 
 # How?
 
