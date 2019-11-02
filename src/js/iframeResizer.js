@@ -1,3 +1,9 @@
+/*
+  This code allows our iframe-embedded form to automatically resize within Janis.
+  The Janis page that hosts this iframed form must also include the companion code from:
+  https://github.com/davidjbradshaw/iframe-resizer-react
+*/
+
 /*! iFrame Resizer (iframeSizer.contentWindow.min.js) - v4.2.2 - 2019-10-08
  *  Desc: Include this file in any page being loaded into an iframe
  *        to force the iframe to resize to the content size.

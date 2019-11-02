@@ -41,6 +41,12 @@
 
     <!-- COA Import iframeResizer library code -->
     <script>
+        /*
+          This code allows our iframe-embedded form to automatically resize within Janis.
+          The Janis page that hosts this iframed form must also include the companion code from:
+          https://github.com/davidjbradshaw/iframe-resizer-react
+        */
+        
         /*! iFrame Resizer (iframeSizer.contentWindow.min.js) - v4.2.2 - 2019-10-08
          *  Desc: Include this file in any page being loaded into an iframe
          *        to force the iframe to resize to the content size.
@@ -53,6 +59,8 @@
     </script>
     <!-- COA Import Default Formstack Styles -->
     <style type="text/css">
+/* This file contains the default Formstack styles */
+
 body {
 		background-color: #ffffff;
 }
@@ -1678,6 +1686,8 @@ html:not([data-scroll='0']) .survey-mode.fsBody .fsForm .survey-header {
     </style>
     <!-- COA Import Style Overrides -->
     <style type="text/css">
+/* This file contains our overrides to default Formstack styles. */
+
 .fsBody {
     font-style: normal;
     font-weight: normal;

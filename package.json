@@ -5,6 +5,9 @@
   "repository": "git@github.com:cityofaustin/formstack-alpha-theme.git",
   "author": "Niicck <niicck@users.noreply.github.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "node ./build/render.js"
+  },
   "dependencies": {
     "handlebars": "^4.5.1"
   }
