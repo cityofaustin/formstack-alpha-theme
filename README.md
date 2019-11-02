@@ -94,3 +94,13 @@ An aside for Formstack developers: if there's only one css style tag, then havin
 </head>
 ```
 But once there are two \<style\> tags, the css for both must be all the way left aligned.
+
+### Formstack Preview doesn't work
+When editing themes using the GUI or the "CSS" tab in the "Advanced Code Editor," your changes will instantly be rendered in the Preview window on the righthand side.
+
+However, changes made in the "Header HTML" tab don't register in the Preview.
+<img
+src="docs/images/preview.png"
+alt-text="Preview" width="400" >
+
+Don't worry. Your changes will work on the Live site once you "Save and activate." You can check by going to "View Site Live."
