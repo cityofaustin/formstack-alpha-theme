@@ -18,4 +18,4 @@ const index = readFile('../src/html/index.html');
 const template = Handlebars.compile(index);
 const data = {} // Allow future option of plugging in variables into handlebar builds
 var generatedHtml = template(data);
-fs.writeFileSync(path.resolve(__dirname, "./formstack_alpha_theme.html"), generatedHtml)
+fs.writeFileSync(path.resolve(__dirname, "./alpha_theme_header.html"), generatedHtml)

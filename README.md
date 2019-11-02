@@ -1,7 +1,26 @@
 # formstack-alpha-theme
-Code committed custom Formstack theme for alpha.austin.gov
+Custom Formstack theme for forms embedded on alpha.austin.gov
 
-# Gotchas
+# Why?
+Our Formstack custom theme requirements extend beyond basic styling tweaks. We inject custom html, js, and css that we need to manage in an organized way. This repo uses the Handlebars templating engine to generate Formstack-compatible Header HTML to use on forms embedded on the City of Austin website.
+
+Using git version control on our Formstack theme allows us to protect our styles against accidental deletion and breaking changes. We can easily revert to working versions and track who added changes and why.
+
+We also gain the benefit of using our own developer IDEs and external libraries to construct our Formstack theme. This can help improve the readability of our theme. By using Handlebars templating we can easily deduce which custom pieces of code we're adding to our template. If the Formstack API ever changes, we'll know which pieces we need to port over.
+
+# Where?
+The generated Header HTML is located at [build/alpha_theme_header.html](build/alpha_theme_header.html)
+
+If you want to use it, copy and paste it into the "Header HTML" under the "Advanced Code Editor" in you Theme Editor.
+!["Header HTML tab"](docs/images/header_html_tab.png)
+
+Then enable it by entering "Save and activate" under "Save Changes".
+!["Save and activate"](docs/images/save_and_activate.png)
+
+# How?
+
+# Wait, what?
+There are some gotchas to watch out for. When you edit Formstack themes using the GUI or the "CSS" tab in the "Advanced Code Editor", the Formstack theme will render exactly as expected. However, when editing Header HTML code directly (as we're doing), there are some non-obvious bugs to watch out for.
 ### css within \<style\> tags must NOT be indented in order to be compiled by Formstack.
 Only this works:
 ```
