@@ -69,6 +69,7 @@
 .fsFieldCell {
     display: flex;
     flex-direction: column;
+    background: blue;
 }
 
 .fsFieldCell input,

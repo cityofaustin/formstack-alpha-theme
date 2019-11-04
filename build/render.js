@@ -2,24 +2,40 @@ const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars');
 
-console.log("Starting build")
+console.log("Starting build");
 
-function readFile(relativePath) {
-  return fs.readFileSync(path.resolve(__dirname, relativePath), 'utf8').toString()
+function readFile(absolutePath) {
+  return fs.readFileSync(absolutePath, 'utf8').toString()
 }
 
-// Allows us to import iframeResizer js as {{> iframeResizer }}
-Handlebars.registerPartial('iframeResizer', readFile('../src/js/iframeResizer.js'));
-// Allows us to import defaultFormstackStyles as {{> defaultFormstackStyles }}
-Handlebars.registerPartial('defaultFormstackStyles', readFile('../src/css/default_formstack.css'));
-// Allows us to import Formstack style overrides as {{> overrideStyles }}
-Handlebars.registerPartial('overrideStyles', readFile('../src/css/override.css'));
+// Register all .js, .css, and .html files in /src/partials as Partials to be used in /src/root.hbs
+const partialsDir = path.resolve(__dirname, '../src/partials')
+for (let dir of fs.readdirSync(partialsDir)) {
+  let subDir = path.resolve(partialsDir, dir)
+  if (fs.lstatSync(subDir).isDirectory()) {
+    for (let file of fs.readdirSync(subDir)) {
+      if (file.match(/(.css|.js|.html)$/)) {
+        /*
+          Ex:
+          Handlebars.registerPartial("iframeResizer", "../src/partials/js/iframeResizer.js")
+          will register "../src/partials/js/iframeResizer.js"
+          as the Partial "{{> iframeResizer }}"
+        */
+        const partialName = path.basename(file, path.extname(file));
+        const partialContents = readFile(path.resolve(subDir, file));
+        Handlebars.registerPartial(partialName, partialContents);
+      }
+    }
+  }
+}
 
 // Render the template
-const root = readFile('../src/html/root.html');
+const root = readFile(path.resolve(__dirname, '../src/root.hbs'));
 const template = Handlebars.compile(root);
-const data = {} // Allow future option of plugging in variables into handlebar builds
-var generatedHtml = template(data);
-fs.writeFileSync(path.resolve(__dirname, "./alpha_theme_header.html"), generatedHtml)
+const data = {
+  isProduction: true,
+};
+const generatedHtml = template(data);
+fs.writeFileSync(path.resolve(__dirname, "./alpha_theme_header.html"), generatedHtml);
 
-console.log("Alpha Theme Header written to /build/alpha_theme_header.html")
+console.log("Alpha Theme Header written to /build/alpha_theme_header.html");

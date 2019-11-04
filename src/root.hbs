@@ -45,12 +45,20 @@
     </script>
     <!-- COA Import Default Formstack Styles -->
     <style type="text/css">
-{{> defaultFormstackStyles }}
+/* Alert! css Partial is left-align deliberately for Formstack compiler. See README for details. */
+{{> default_formstack }}
     </style>
     <!-- COA Import Style Overrides -->
     <style type="text/css">
-{{> overrideStyles }}
+/* Alert! css Partial is left-align deliberately for Formstack compiler. See README for details. */
+{{> override }}
     </style>
 </head>
 
+{{#if isProduction}}
 <body id="fsLocal" class="fsBody">
+{{else}}
+<body id="fsLocal" class="fsBody">
+    {{> demo_form_body }}
+</body>
+{{/if}}

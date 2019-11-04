@@ -25,11 +25,11 @@ alt-text="Save and activate" width="400" >
 
 1. Install node and yarn.
 2. Run `yarn install` to install dependencies.
-3. Run `yarn build` to rebuild alpha_theme_header.
+3. Run `yarn build` to rebuild `/build/alpha_theme_header.html`.
 
 The build command runs `/build/render.js`. This compiles our Handlebars template into a single self-contained HTML file. The root template is located at `/src/html/root.html`.
 
-To add code from external files into the template you must register them as "Partials" within /build/render.js.
+To add code from external files into the template you must register them as Handlebar "Partials" in /build/partialResolver.js.
 
 For extra clarity, please add a `<!-- COA Import ... -->` comment above any new code that you import into the root template.
 
