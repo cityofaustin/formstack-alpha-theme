@@ -12,9 +12,13 @@ dotenv.config();
   const webpackConfig = require('../webpack.config');
   const compiler = webpack(webpackConfig);
   app.use(require("webpack-dev-middleware")(compiler, {
-    noInfo: true, publicPath: webpackConfig.output.publicPath
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
   }));
 })()
+
+// require('file!../src/partials/css/override.css');
+// require('../src/partials/css/override.css');
 
 /*
   "hbsutils" library will watch for changes to any registered partial files.
@@ -26,10 +30,14 @@ const options = {
   // Return name of partial from its path
   name: function(partialPath) {
     const splitPartialPath = partialPath.split('/');
+    console.log(`~~~~ for sure registered: ${splitPartialPath[splitPartialPath.length - 1]}`)
     return splitPartialPath[splitPartialPath.length - 1];
   },
   // Register any .css, .js, or .html file in /src/partials
   match: /(.css|.js|.html)$/,
+  onChange: function(name) {
+    console.log("~~~~ hbs: hey this changed:", name)
+  }
 }
 hbsutils.registerWatchedPartials(partialsDir, options)
 
