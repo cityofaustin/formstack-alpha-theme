@@ -3,6 +3,8 @@ const path = require('path');
 const hbs = require('hbs');
 const hbsutils = require('hbs-utils')(hbs);
 const app = require('express')();
+const dotenv = require('dotenv');
+dotenv.config();
 
 /*
   "hbsutils" library will watch for changes to any registered partial files.
@@ -29,6 +31,6 @@ app.get('/', (req,res) => {
   res.render('root');
 });
 
-const port = process.env.FORMSTACK_PORT || 5000
+const port = process.env.FORMSTACK_PREVIEW_PORT || 5000
 app.listen(port);
 console.log(`Serving form preview at http://localhost:${port}`)

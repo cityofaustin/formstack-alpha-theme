@@ -17,8 +17,11 @@ for (let dir of fs.readdirSync(partialsDir)) {
       if (file.match(/(.css|.js|.html)$/)) {
         /*
           Ex:
-          Handlebars.registerPartial("iframeResizer", "../src/partials/js/iframeResizer.js")
-          will register "../src/partials/js/iframeResizer.js"
+          file = iframeResizer.js
+          partialName = iframeResizer
+          partialContents = readFile("../src/partials/js/iframeResizer.js")
+          Handlebars.registerPartial(partialName, partialContents)
+          will register the contents of "../src/partials/js/iframeResizer.js"
           as the Partial "{{> iframeResizer }}"
         */
         const partialName = path.basename(file, path.extname(file));

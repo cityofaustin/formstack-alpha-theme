@@ -23,15 +23,29 @@ alt-text="Save and activate" width="400" >
 
 ## How?
 
+### To Build
+
 1. Install node and yarn.
 2. Run `yarn install` to install dependencies.
 3. Run `yarn build` to rebuild `/build/alpha_theme_header.html`.
 
-The build command runs `/build/render.js`. This compiles our Handlebars template into a single self-contained HTML file. The root template is located at `/src/html/root.html`.
+The build command runs `/build/render.js`. This compiles our Handlebars template into a single self-contained HTML file. The root template is located at `/src/root.hbs`.
 
-To add code from external files into the template you must register them as Handlebar "Partials" in /build/partialResolver.js.
+Add extra Handlebar Partials to the partials directory. The base filename (use underscore_deliminated_names for compatibilty with the "Handlebar" and "hbs" libraries' parsers) will be the name of the Partial you can use in `/src/root.hbs`.
 
-For extra clarity, please add a `<!-- COA Import ... -->` comment above any new code that you import into the root template.
+For clarity, please add a `<!-- COA Import ... -->` comment above any new Partial that you import into the root template.
+
+### To Preview
+
+1. Install node and yarn.
+2. Run `yarn install` to install dependencies.
+3. Run `yarn preview` to serve a live reloading preview to http://localhost:5000.
+
+This will allow you to see how your styles render on a real form.
+
+Pressing "Submit" will create a new submission in Formstack. This is perfectly ok to do with the demo form. But it's something to be mindful of if you decide to use a different form.
+
+If you want to plug in a different form to use, you'll have to manually retrieve it from Formstack's API using `/build/getDemoFormBody.js`. Copy `template.env` into a `.env` file, plug in your Formstack credentials, and run `node /build/getDemoFormBody.js`. There is currently not an automated process for plugging that new form into /src/root.hbs, but if you got that far you'll be able to figure it out.
 
 ## Wait, what?
 There are some gotchas to watch out for. When you edit Formstack themes using the GUI or the "CSS" tab in the "Advanced Code Editor", the Formstack theme will render exactly as expected. However, when editing Header HTML code directly (as we're doing), there are some non-obvious bugs to watch out for.
