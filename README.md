@@ -48,7 +48,9 @@ Pressing "Submit" will create a new submission in Formstack. This is perfectly o
 If you want to plug in a different form to use, you'll have to manually retrieve it from Formstack's API using `/build/getDemoFormBody.js`. Copy `template.env` into a `.env` file, plug in your Formstack credentials, and run `node /build/getDemoFormBody.js`. There is currently not an automated process for plugging that new form into /src/root.hbs, but if you got that far you'll be able to figure it out.
 
 ## Wait, what?
+
 There are some gotchas to watch out for. When you edit Formstack themes using the GUI or the "CSS" tab in the "Advanced Code Editor", the Formstack theme will render exactly as expected. However, when editing Header HTML code directly (as we're doing), there are some non-obvious bugs to watch out for.
+
 ### css within \<style\> tags must NOT be indented in order to be compiled by Formstack.
 Only this works:
 ```
@@ -109,7 +111,7 @@ An aside for Formstack developers: if there's only one css style tag, then havin
 ```
 But once there are two \<style\> tags, the css for both must be all the way left aligned.
 
-### Formstack Preview doesn't work
+### Formstack Preview won't work
 When editing themes using the GUI or the "CSS" tab in the "Advanced Code Editor," your changes will instantly be rendered in the Preview window on the righthand side.
 
 However, changes made in the "Header HTML" tab don't register in the Preview.
@@ -117,4 +119,4 @@ However, changes made in the "Header HTML" tab don't register in the Preview.
 src="docs/images/preview.png"
 alt-text="Preview" width="400" >
 
-Don't worry. Your changes will work on the Live site once you "Save and activate." You can check by going to "View Site Live."
+Don't worry. Your changes will work on the Live site once you "Save and activate." You can check by going to "View Site Live." You can also run `yarn preview` to see how your styles look on our demo form.
