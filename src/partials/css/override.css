@@ -1,9 +1,11 @@
 /* This file contains our overrides to default Formstack styles. */
 
+/********/
+/* Body */
+/********/
 .fsBody {
     font-style: normal;
     font-weight: normal;
-    font-size: 62.5%;
 }
 
 .wf-active .fsBody,
@@ -13,45 +15,44 @@
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
-
+/********/
 /* Section Heading Container */
-
+/********/
 .fsBody .fsSectionHeader {
-    margin-bottom: 0.7em;
-    /* Works on Preview */
+    margin-bottom: 6.4rem;
     padding: 0;
     background-color: inherit;
 }
-
 .fsborderradius .fsBody .fsSectionHeader {
     margin-bottom: 0.7em;
-    /* Works on Live */
 }
 
-
+/********/
 /* Section Heading Text */
-
+/********/
 .fsBody .fsForm .fsSectionHeading {
-    margin-top: 2em;
+    margin-top: 0rem;
     text-align: left;
-    font-size: 2.4em;
+    font-size: 3.2rem;
     font-weight: 400;
-    color: #171717;
+    color: #212121;
+    line-height: 1em;
 }
 
-
+/********/
 /* Field Labels */
-
+/********/
 .fsBody .fsLabel {
     color: #212121;
     border-color: #171717;
-    font-size: 1.8em;
+    font-size: 1.8rem;
+    font-weight: 700;
     margin-top: 0px;
-    margin-bottom: 1.1em;
+    margin-bottom: .8rem;
 }
 
 .fsRequiredMarker {
-    font-size: 1.8em;
+    font-size: 1.8rem;
     visibility: hidden;
     position: relative;
 }
@@ -60,10 +61,10 @@
     visibility: visible;
     top: 0;
     left: 0;
-    content: "(*Required)";
-    font-size: 18px;
-    color: #cd2026;
-    /*font-weight: 700;*/
+    content: "(Required)";
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #D63E04;
 }
 
 .fsFieldCell {
