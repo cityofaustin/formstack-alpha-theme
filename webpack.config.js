@@ -1,38 +1,29 @@
 const fs = require('fs');
 const path = require('path');
-
-const partialResolver = require('./build/partialResolver');
+const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: './src/preview/app.js',
+  entry: './build/preview.js',
   mode: 'development',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'app.js'
   },
   resolve: {
-    extensions: ['.hbs', '.js', '.css', '.html'],
+    extensions: ['.js'],
   },
-  module: {
-    rules: [
-      {
-        test: /\.(html)$/,
-        loader: 'html-loader'
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.hbs$/,
-        loader: "handlebars-loader",
-        options: {
-          partialResolver: function(partial, callback) {
-            const pathOnDisk = path.resolve(__dirname, 'build', partialResolver[partial]);
-            callback(null, pathOnDisk);
-          }
-        }
-      },
-    ],
-  },
+  target: 'node',
+  externals: [nodeExternals()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    function(compiler) {
+      console.log("~~~~ file dependencies?", this.fileDependencies)
+      console.log("~~~~ contextDependencies?", this.contextDependencies)
+      // compiler.plugin("after-compiler", function() {
+        // this.fileDependencies.push("/path/to/my/file");
+        // this.contextDependencies.push("/path/to/my/folder");
+      // }
+    },
+  ],
 };

@@ -6,12 +6,21 @@ const app = require('express')();
 const dotenv = require('dotenv');
 dotenv.config();
 
+// Set up hot reload middleware
+(function() {
+  const webpack = require('webpack');
+  const webpackConfig = require('../webpack.config');
+  const compiler = webpack(webpackConfig);
+  app.use(require("webpack-dev-middleware")(compiler, {
+    noInfo: true, publicPath: webpackConfig.output.publicPath
+  }));
+})()
+
 /*
   "hbsutils" library will watch for changes to any registered partial files.
   This allows you to see style changes in realtime without needing to
   restart your node express server.
 */
-
 const partialsDir = path.resolve(__dirname, '../src/partials/');
 const options = {
   // Return name of partial from its path
@@ -24,13 +33,12 @@ const options = {
 }
 hbsutils.registerWatchedPartials(partialsDir, options)
 
+// Start express server with Handlebars view engine
 app.set("view engine", "hbs");
 app.set('views', __dirname + '/../src/');
-
 app.get('/', (req,res) => {
   res.render('root');
 });
-
 const port = process.env.FORMSTACK_PREVIEW_PORT || 5000
 app.listen(port);
 console.log(`Serving form preview at http://localhost:${port}`)
