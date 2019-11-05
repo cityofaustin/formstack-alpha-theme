@@ -6,16 +6,6 @@ const app = require('express')();
 const dotenv = require('dotenv');
 dotenv.config();
 
-// Set up hot reload middleware
-(function() {
-  const webpack = require('webpack');
-  const webpackConfig = require('../webpack.config');
-  const compiler = webpack(webpackConfig);
-  app.use(require("webpack-dev-middleware")(compiler, {
-    noInfo: true, publicPath: webpackConfig.output.publicPath
-  }));
-})()
-
 /*
   "hbsutils" library will watch for changes to any registered partial files.
   This allows you to see style changes in realtime without needing to

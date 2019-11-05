@@ -7,27 +7,17 @@
   "license": "MIT",
   "scripts": {
     "build": "node ./build/render.js",
-    "preview": "node ./build/preview.js",
-    "test": "webpack"
+    "preview": "node ./build/preview.js"
   },
   "dependencies": {
-    "handlebars": "^4.5.1",
-    "hbs-utils": "^0.0.4"
+    "handlebars": "^4.5.1"
   },
   "devDependencies": {
     "axios": "^0.19.0",
     "cheerio": "^1.0.0-rc.3",
-    "css-loader": "^3.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "handlebars-loader": "^1.7.1",
     "hbs": "^4.0.6",
-    "html-loader": "^0.5.5",
-    "style-loader": "^1.0.0",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-middleware": "^3.7.2",
-    "webpack-hot-middleware": "^2.25.0",
-    "webpack-node-externals": "^1.7.2"
+    "hbs-utils": "^0.0.4"
   }
 }
