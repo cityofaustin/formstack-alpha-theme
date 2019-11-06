@@ -33,8 +33,8 @@ for (let dir of fs.readdirSync(partialsDir)) {
 }
 
 // Render the template
-const root = readFile(path.resolve(__dirname, '../src/root.hbs'));
-const template = Handlebars.compile(root);
+const header = readFile(path.resolve(__dirname, '../src/header.hbs'));
+const template = Handlebars.compile(header);
 const data = {
   isProduction: true,
 };

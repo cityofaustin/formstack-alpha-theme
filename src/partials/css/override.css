@@ -67,6 +67,9 @@
     color: #D63E04;
 }
 
+/********/
+/* FieldCell and Helper Text */
+/********/
 .fsFieldCell {
     display: flex;
     flex-direction: column;
@@ -79,17 +82,15 @@
     border-color: #dbdee1;
 }
 
-.fsFieldCell > .fsSupporting {
-    order: 1;
-    /* Place helper text above input field*/
-    font-size: 1.6em;
-    line-height: 1.5em;
-    color: #212121;
-    margin-bottom: 1em;
-    /*margin-top: 1em;*/
+.fsFieldCell > .fsSupporting,
+.fieldset-content > .fsSupporting {
+    order: 1; /* Place helper text above input field*/
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    color: #3D4551;
+    margin-bottom: .8rem;
 }
 
 .fsField {
-    order: 2;
-    /* Place input field below helper text*/
+    order: 2; /* Place input field below helper text*/
 }

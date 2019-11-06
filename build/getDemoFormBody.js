@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const pretty = require('pretty');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -20,7 +21,7 @@ axios.get(`https://www.formstack.com/api/v2/form/${process.env.FORM_ID}.json`, {
   }
 }).then((res) => {
   const $ = cheerio.load(res.data.html);
-  const body = $("body").html()
+  const body = pretty($("body").html())
   fs.writeFileSync(path.resolve(__dirname, `./demo_form_body_${process.env.FORM_ID}.html`), body)
   console.log(`New form body written to src/preview/demo_form_body_${process.env.FORM_ID}.html`)
 }).catch((err) => {
