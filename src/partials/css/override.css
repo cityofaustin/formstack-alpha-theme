@@ -70,11 +70,6 @@
 /********/
 /* FieldCell and Helper Text */
 /********/
-.fsFieldCell {
-    display: flex;
-    flex-direction: column;
-}
-
 .fsFieldCell input,
 .fsFieldCell textarea,
 .fsFieldCell select {
@@ -84,13 +79,17 @@
 
 .fsFieldCell > .fsSupporting,
 .fieldset-content > .fsSupporting {
-    order: 1; /* Place helper text above input field*/
     font-size: 1.6rem;
     line-height: 1.6rem;
     color: #3D4551;
     margin-bottom: .8rem;
 }
 
-.fsField {
-    order: 2; /* Place input field below helper text*/
+/*
+  Supporting Text in subFields must keep their small font-size.
+  Or else the text in Address Blocks (like "ZIP Code") won't fit.
+*/
+.fsSubField > .fsSupporting {
+    color: #3D4551;
+    margin-bottom: .8rem;
 }

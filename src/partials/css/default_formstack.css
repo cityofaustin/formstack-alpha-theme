@@ -4,6 +4,7 @@ html {
 }
 
 body {
+    display: none; /* COA addition hide flickering styles. Will render body in footer script. */
 		background-color: #ffffff;
 }
 

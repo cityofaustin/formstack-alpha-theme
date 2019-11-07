@@ -1,5 +1,3 @@
-console.log("~~~~ We hacked it! :)")
-
 if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
         "use strict";
@@ -117,8 +115,6 @@ jQuery.noConflict();
 "use strict";
 var console   = window.console   || {log : function() {}, warn : function() {}, error : function() {}};
 var Formstack = window.Formstack || {};
-
-console.log("~~~~~~ Loading HACKY formstack")
 
 /**
  * Formstack.Form
