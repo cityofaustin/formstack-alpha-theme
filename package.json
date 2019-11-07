@@ -7,7 +7,9 @@
   "license": "MIT",
   "scripts": {
     "build": "node ./build/render.js",
-    "preview": "node ./build/preview.js"
+    "build-css": "node-sass-chokidar ./src -o ./src",
+    "watch-css": "node-sass-chokidar ./src -o ./src -w",
+    "preview": "yarn build-css && node ./build/preview.js && yarn watch-css"
   },
   "dependencies": {
     "handlebars": "^4.5.1"
@@ -19,6 +21,7 @@
     "express": "^4.17.1",
     "hbs": "^4.0.6",
     "hbs-utils": "^0.0.4",
+    "node-sass-chokidar": "^1.4.0",
     "pretty": "^2.0.0"
   }
 }
