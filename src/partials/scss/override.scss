@@ -75,7 +75,7 @@
   border-radius: 4px !important;
   border-width: 2px !important;
   border-color: #000000 !important;
-  height: 4.8rem;
+  line-height: normal; // prevent letters from getting cut off
 }
 
 // Specificity is required to override the default Formstack styles
@@ -83,24 +83,31 @@
 .fsRowBody input[type="email"],
 .fsRowBody input[type="number"],
 .fsRowBody input[type="tel"],
-.fsForm textarea,
 .fsSignature,
 .fsRowBody input[type="text"].fsRequired,
 .fsRowBody input[type="email"].fsRequired,
 .fsRowBody input[type="number"].fsRequired,
-.fsRowBody input[type="tel"].fsRequired,
-.fsForm textarea.fsRequired {
+.fsRowBody input[type="tel"].fsRequired {
 		@extend .coa-field;
+    height: 4.8rem;
     padding: 12px 10px;
 }
 
 .fsForm select,
 .fsForm select.fsRequired {
     @extend .coa-field;
+    height: 4.8rem;
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 10px;
     // Allow Formstack to calculate right padding for <select> fields
+}
+
+.fsForm textarea,
+.fsForm textarea.fsRequired {
+    @extend .coa-field;
+    // Don't override height for textarea
+    padding: 12px 10px;
 }
 
 .fsBody fieldset {
@@ -147,12 +154,16 @@
     margin-bottom: .8rem;
 }
 
-/*
-  .always-ltr follows .fsSupporting for Time Selector Widget.
-  Allow ".fieldset-content > .fsSupporting" to manage the margin consistently.
-*/
 .fsBody .fieldset-content .always-ltr {
-  margin-top: 0px;
+  margin-top: .8rem;
+}
+
+/*
+  If .fsSupporting comes before .always-ltr (ex: for the Time Picker Widget)
+  then let ".fsSubField > .fsSupporting" control the margin between them.
+*/
+.fsBody .fieldset-content .fsSupporting + .always-ltr {
+  margin-top: 0rem;
 }
 
 /********/
@@ -175,8 +186,8 @@
 /* Buttons */
 /********/
 .coa-button {
-  height: 48px;
-  border-radius: 4px !important;
+  height: 4.8rem;
+  border-radius: .4rem !important;
 }
 
 .fsSubmitButton {
@@ -190,4 +201,11 @@
 
 .fsPreviousButton, .fsNextButton {
   @extend .coa-button;
+  border-width: .2rem;
+  border-color: #0050D8 !important;
+  background-color: #FFFFFF !important;
+  color: #0050D8 !important;
+  &:hover {
+    background-color: #EFF6FB !important;
+  }
 }
