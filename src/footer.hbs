@@ -1,7 +1,10 @@
 <div>
-  <script type="text/javascript">
-    {{> Formstack }}
-  </script>
+  {{#unless isProduction}}
+    <!-- Add modified Formstack source code for debugging and Handlebar compatibility -->
+    <script type="text/javascript">
+      {{> Formstack }}
+    </script>
+  {{/unless}}
   <script type="text/javascript">
     {{> moveHelperText }}
   </script>

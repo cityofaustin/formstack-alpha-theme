@@ -6,7 +6,7 @@
   "author": "Niicck <niicck@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "node ./build/render.js",
+    "build": "yarn build-css && node ./build/render.js",
     "build-css": "node-sass-chokidar ./src/partials/scss -o ./src/partials/scss",
     "watch-css": "node-sass-chokidar ./src/partials/scss -o ./src/partials/scss -w",
     "start-preview-server": "node ./build/preview.js",

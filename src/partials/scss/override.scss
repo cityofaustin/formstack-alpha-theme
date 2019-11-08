@@ -147,6 +147,14 @@
     margin-bottom: .8rem;
 }
 
+/*
+  .always-ltr follows .fsSupporting for Time Selector Widget.
+  Allow ".fieldset-content > .fsSupporting" to manage the margin consistently.
+*/
+.fsBody .fieldset-content .always-ltr {
+  margin-top: 0px;
+}
+
 /********/
 /* Error Handling */
 /********/
@@ -161,4 +169,25 @@
       @extend .coa-field;
       border-color: #D63E04 !important; /* Need to Override Formstack's !important css */
   }
+}
+
+/********/
+/* Buttons */
+/********/
+.coa-button {
+  height: 48px;
+  border-radius: 4px !important;
+}
+
+.fsSubmitButton {
+  @extend .coa-button;
+  background-color: #0050D8 !important;
+  color: #FFFFFF !important;
+  &:hover {
+    background-color: #2672DE !important;
+  }
+}
+
+.fsPreviousButton, .fsNextButton {
+  @extend .coa-button;
 }
