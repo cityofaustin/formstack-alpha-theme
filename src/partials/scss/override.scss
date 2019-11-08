@@ -55,26 +55,52 @@
     font-size: 1.8rem;
     visibility: hidden;
     position: relative;
-}
 
-.fsRequiredMarker:after {
-    visibility: visible;
-    top: 0;
-    left: 0;
-    content: "(Required)";
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #D63E04;
+    &:after {
+      visibility: visible;
+      top: 0;
+      left: 0;
+      content: "(Required)";
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #D63E04;
+    }
 }
 
 /********/
-/* FieldCell and Helper Text */
+/* Fields and Helper Text */
 /********/
-.fsFieldCell input,
-.fsFieldCell textarea,
-.fsFieldCell select {
-    border-radius: 4px;
-    border-color: #dbdee1;
+// Have to override Formstack's !important cssß
+.coa-field {
+  border-radius: 4px !important;
+  border-width: 2px !important;
+  border-color: #000000 !important;
+}
+
+// Specificity is required to override the default Formstack styles
+.fsRowBody input[type="text"],
+.fsRowBody input[type="email"],
+.fsRowBody input[type="number"],
+.fsRowBody input[type="tel"],
+.fsForm textarea,
+.fsSignature,
+.fsRowBody input[type="text"].fsRequired,
+.fsRowBody input[type="email"].fsRequired,
+.fsRowBody input[type="number"].fsRequired,
+.fsRowBody input[type="tel"].fsRequired,
+.fsForm select.fsRequired,
+.fsForm textarea.fsRequired {
+		@extend .coa-field;
+
+    &.fsValidationError {
+      @extend .coa-field;
+      border-color: #D63E04;
+    }
+}
+
+.fsForm textarea,
+.fsForm textarea.fsRequired {
+  padding: 12px 10px;
 }
 
 .fsFieldCell > .fsSupporting,
@@ -98,4 +124,14 @@
 /* Error Handling */
 /********/
 .fsValidationError {
+  input[type="text"].fsRequired,
+  input[type="email"].fsRequired,
+  input[type="number"].fsRequired,
+  input[type="tel"].fsRequired,
+  select.fsRequired,
+  textarea.fsRequired,
+  .fsSignature.fsRequired {
+      @extend .coa-field;
+      border-color: #D63E04 !important; /* Need to Override Formstack's !important css */
+  }
 }

@@ -11,7 +11,7 @@ dotenv.config();
   This allows you to see style changes in realtime without needing to
   restart your node express server.
 */
-const partialsDir = path.resolve(__dirname, '../src/');
+const partialsDir = path.resolve(__dirname, '../src');
 const options = {
   // Return name of partial from its path
   name: function(partialPath) {
@@ -19,7 +19,8 @@ const options = {
     return splitPartialPath[splitPartialPath.length - 1];
   },
   // Register any .css, .js, or .html file in /src/partials
-  match: /(.css|.js|.html|.hbs)$/,
+  match: /(\.css|\.js|\.html|\.hbs)$/,
+  onchange: function(name) {},
 }
 hbsutils.registerWatchedPartials(partialsDir, options)
 

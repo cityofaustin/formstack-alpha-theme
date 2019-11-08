@@ -7,9 +7,11 @@
   "license": "MIT",
   "scripts": {
     "build": "node ./build/render.js",
-    "build-css": "node-sass-chokidar ./src -o ./src",
-    "watch-css": "node-sass-chokidar ./src -o ./src -w",
-    "preview": "yarn build-css && node ./build/preview.js && yarn watch-css"
+    "build-css": "node-sass-chokidar ./src/partials/scss -o ./src/partials/scss",
+    "watch-css": "node-sass-chokidar ./src/partials/scss -o ./src/partials/scss -w",
+    "start-preview-server": "node ./build/preview.js",
+    "start-preview-processes": "npm-run-all -p start-preview-server watch-css",
+    "preview": "yarn build-css && yarn start-preview-processes"
   },
   "dependencies": {
     "handlebars": "^4.5.1"
@@ -22,6 +24,7 @@
     "hbs": "^4.0.6",
     "hbs-utils": "^0.0.4",
     "node-sass-chokidar": "^1.4.0",
+    "npm-run-all": "^4.1.5",
     "pretty": "^2.0.0"
   }
 }

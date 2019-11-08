@@ -14,7 +14,7 @@ for (let dir of fs.readdirSync(partialsDir)) {
   let subDir = path.resolve(partialsDir, dir)
   if (fs.lstatSync(subDir).isDirectory()) {
     for (let file of fs.readdirSync(subDir)) {
-      if (file.match(/(.css|.js|.html)$/)) {
+      if (file.match(/(\.css|\.js|\.html)$/)) {
         /*
           Ex:
           file = iframeResizer.js
