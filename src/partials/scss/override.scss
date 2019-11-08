@@ -68,13 +68,14 @@
 }
 
 /********/
-/* Fields and Helper Text */
+/* Fields */
 /********/
-// Have to override Formstack's !important cssß
+// Have to override Formstack's !important css
 .coa-field {
   border-radius: 4px !important;
   border-width: 2px !important;
   border-color: #000000 !important;
+  height: 4.8rem;
 }
 
 // Specificity is required to override the default Formstack styles
@@ -88,21 +89,47 @@
 .fsRowBody input[type="email"].fsRequired,
 .fsRowBody input[type="number"].fsRequired,
 .fsRowBody input[type="tel"].fsRequired,
-.fsForm select.fsRequired,
 .fsForm textarea.fsRequired {
 		@extend .coa-field;
-
-    &.fsValidationError {
-      @extend .coa-field;
-      border-color: #D63E04;
-    }
+    padding: 12px 10px;
 }
 
-.fsForm textarea,
-.fsForm textarea.fsRequired {
-  padding: 12px 10px;
+.fsForm select,
+.fsForm select.fsRequired {
+    @extend .coa-field;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 10px;
+    // Allow Formstack to calculate right padding for <select> fields
 }
 
+.fsBody fieldset {
+  margin-bottom: 3rem;
+}
+
+.fsRowBody input[type="checkbox"]:before,
+.fsRowBody input[type="radio"]:before {
+  border-color: #000000;
+}
+
+.fsRowBody input[type="checkbox"]:checked:before {
+  border-color: #0050D8;
+  background-color: #0050D8;
+}
+
+.fsRowBody input[type="radio"]:checked:before {
+  border-color: #0050D8;
+}
+
+// Undo Fromstack's margin/padding overrides on checkbox and radio fields on focus
+.fsFieldFocused:not(.fsValidationError).fsSpan100 {
+  padding: inherit !important;
+  margin: inherit !important;
+}
+
+/********/
+/* Helper Text */
+/********/
 .fsFieldCell > .fsSupporting,
 .fieldset-content > .fsSupporting {
     font-size: 1.6rem;
