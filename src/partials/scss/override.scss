@@ -134,6 +134,21 @@
   margin: inherit !important;
 }
 
+.fsCurrency {
+  line-height: 4.8rem;
+  font-size: 1.6rem;
+  width: 10px;
+}
+
+/*
+  .fsCurrency will always be 15px wide (10px + 5px margin-right)
+  The sibling input field must fill the space minus 15px.
+  Overrides similar calculation in default Formstack styles.
+*/
+.fsCurrency ~ input.fsField {
+  width: calc(100% - 15px) !important;
+}
+
 /********/
 /* Helper Text */
 /********/

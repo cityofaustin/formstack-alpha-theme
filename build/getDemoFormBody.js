@@ -21,6 +21,8 @@ axios.get(`https://www.formstack.com/api/v2/form/${process.env.FORM_ID}.json`, {
   }
 }).then((res) => {
   const $ = cheerio.load(res.data.html);
+  // Strangely, the API doesn't set the "$" for currency fields, even though the real site will render it. 
+  $(".fsCurrencyPrefix").text('$');
   const body = pretty($("body").html())
   fs.writeFileSync(path.resolve(__dirname, `../src/partials/html/demo_form_body_${process.env.FORM_ID}.html`), body)
   console.log(`New form body written to src/preview/demo_form_body_${process.env.FORM_ID}.html`)

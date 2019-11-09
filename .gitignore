@@ -6,7 +6,6 @@ dist/
 
 # Dev Process
 .env
-build/demo_*.html
 
 # Ignore css compiled by node-sass-chokidar
 /src/partials/scss/*.css

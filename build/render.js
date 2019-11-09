@@ -33,12 +33,17 @@ for (let dir of fs.readdirSync(partialsDir)) {
 }
 
 // Render the template
-const header = readFile(path.resolve(__dirname, '../src/header.hbs'));
-const template = Handlebars.compile(header);
-const data = {
-  isProduction: true,
-};
-const generatedHtml = template(data);
-fs.writeFileSync(path.resolve(__dirname, "./alpha_theme_header.html"), generatedHtml);
+function renderTemplate(templateName) {
+  const templateFile = readFile(path.resolve(__dirname, `../src/${templateName}.hbs`));
+  const template = Handlebars.compile(templateFile);
+  const data = {
+    isProduction: true,
+  };
+  const generatedHtml = template(data);
+  fs.writeFileSync(path.resolve(__dirname, `../theme/${templateName}.html`), generatedHtml);
 
-console.log("Alpha Theme Header written to /build/alpha_theme_header.html");
+  console.log(`Alpha theme ${templateName} written to /theme/${templateName}.html`);
+}
+
+renderTemplate('header');
+renderTemplate('footer');

@@ -1,0 +1,46 @@
+<div>
+  <script type="text/javascript">
+    $ = jQuery;
+    
+    // Moves helper text from below its field to above its field
+    var helperTexts = $(".fsSupporting");
+    for (i=0; i < helperTexts.length; i++) {
+      var helperText = $(helperTexts[i]);
+      var parent = helperText.parent();
+      helperText.detach();
+      var label = parent.children('.fsLabel');
+      if (label.length) {
+        // If the field's label is in the helperText's parent
+        // then insert the helperText after the label
+        helperText.insertAfter(label);
+      } else {
+        // If the field's label is not in the helperText's parent
+        // (for ex: in <fieldset/> structures)
+        // then insert the helper text at the top of the parent element
+        helperText.prependTo(parent);
+      }
+    }
+  </script>
+  <script type="text/javascript">
+    // gracias: https://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t
+    function inIframe () {
+        try {
+            return window.self !== window.top;
+        } catch (e) {
+            return true;
+        }
+    }
+    
+    if (inIframe()) {
+      console.log("~~~ We are in an iframe")
+    } else {
+      console.log("~~~ We are not in an iframe")
+    }
+  </script>
+  <script type="text/javascript">
+    $ = jQuery;
+    
+    // Display the body after our js and css has finished loading
+    $('body').css('display', 'inherit')
+  </script>
+</div>

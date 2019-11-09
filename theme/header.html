@@ -61,8 +61,12 @@
     <style type="text/css">
 /* Alert! css Partial is left-align deliberately for Formstack compiler. See README for details. */
 /* This file contains the default Formstack styles */
+html {
+    font-size: 62.5%; /* COA addition to allow us to use rem */
+}
 
 body {
+    display: none; /* COA addition to hide flickering styles. Will re-display body in footer script. */
 		background-color: #ffffff;
 }
 
@@ -1689,99 +1693,192 @@ html:not([data-scroll='0']) .survey-mode.fsBody .fsForm .survey-header {
     <style type="text/css">
 /* Alert! css Partial is left-align deliberately for Formstack compiler. See README for details. */
 /* This file contains our overrides to default Formstack styles. */
-
+/********/
+/* Body */
+/********/
 .fsBody {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 62.5%;
-}
+  font-style: normal;
+  font-weight: normal; }
 
 .wf-active .fsBody,
 .wf-active .fsBody input,
 .wf-active .fsBody select,
 .wf-active .fsBody textarea {
-    font-family: 'IBM Plex Sans', sans-serif;
-}
+  font-family: 'IBM Plex Sans', sans-serif; }
 
-
+/********/
 /* Section Heading Container */
-
+/********/
 .fsBody .fsSectionHeader {
-    margin-bottom: 0.7em;
-    /* Works on Preview */
-    padding: 0;
-    background-color: inherit;
-}
+  margin-bottom: 6.4rem;
+  padding: 0;
+  background-color: inherit; }
 
 .fsborderradius .fsBody .fsSectionHeader {
-    margin-bottom: 0.7em;
-    /* Works on Live */
-}
+  margin-bottom: 0.7em; }
 
-
+/********/
 /* Section Heading Text */
-
+/********/
 .fsBody .fsForm .fsSectionHeading {
-    margin-top: 2em;
-    text-align: left;
-    font-size: 2.4em;
-    font-weight: 400;
-    color: #171717;
-}
+  margin-top: 0rem;
+  text-align: left;
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #212121;
+  line-height: 1em; }
 
-
+/********/
 /* Field Labels */
-
+/********/
 .fsBody .fsLabel {
-    color: #212121;
-    border-color: #171717;
-    font-size: 1.8em;
-    margin-top: 0px;
-    margin-bottom: 1.1em;
-}
+  color: #212121;
+  border-color: #171717;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: .8rem; }
 
 .fsRequiredMarker {
-    font-size: 1.8em;
-    visibility: hidden;
-    position: relative;
-}
-
-.fsRequiredMarker:after {
+  font-size: 1.8rem;
+  visibility: hidden;
+  position: relative; }
+  .fsRequiredMarker:after {
     visibility: visible;
     top: 0;
     left: 0;
-    content: "(*Required)";
-    font-size: 18px;
-    color: #cd2026;
-    /*font-weight: 700;*/
-}
+    content: "(Required)";
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #D63E04; }
 
-.fsFieldCell {
-    display: flex;
-    flex-direction: column;
-}
+/********/
+/* Fields */
+/********/
+.coa-field, .fsRowBody input[type="text"],
+.fsRowBody input[type="email"],
+.fsRowBody input[type="number"],
+.fsRowBody input[type="tel"],
+.fsSignature,
+.fsRowBody input.fsRequired[type="text"],
+.fsRowBody input.fsRequired[type="email"],
+.fsRowBody input.fsRequired[type="number"],
+.fsRowBody input.fsRequired[type="tel"], .fsForm select,
+.fsForm select.fsRequired, .fsForm textarea,
+.fsForm textarea.fsRequired, .fsValidationError input.fsRequired[type="text"],
+.fsValidationError input.fsRequired[type="email"],
+.fsValidationError input.fsRequired[type="number"],
+.fsValidationError input.fsRequired[type="tel"],
+.fsValidationError select.fsRequired,
+.fsValidationError textarea.fsRequired,
+.fsValidationError .fsSignature.fsRequired {
+  border-radius: 4px !important;
+  border-width: 2px !important;
+  border-color: #000000 !important;
+  line-height: normal; }
 
-.fsFieldCell input,
-.fsFieldCell textarea,
-.fsFieldCell select {
-    border-radius: 4px;
-    border-color: #dbdee1;
-}
+.fsRowBody input[type="text"],
+.fsRowBody input[type="email"],
+.fsRowBody input[type="number"],
+.fsRowBody input[type="tel"],
+.fsSignature,
+.fsRowBody input[type="text"].fsRequired,
+.fsRowBody input[type="email"].fsRequired,
+.fsRowBody input[type="number"].fsRequired,
+.fsRowBody input[type="tel"].fsRequired {
+  height: 4.8rem;
+  padding: 12px 10px; }
 
-.fsFieldCell > .fsSupporting {
-    order: 1;
-    /* Place helper text above input field*/
-    font-size: 1.6em;
-    line-height: 1.5em;
-    color: #212121;
-    margin-bottom: 1em;
-    /*margin-top: 1em;*/
-}
+.fsForm select,
+.fsForm select.fsRequired {
+  height: 4.8rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 10px; }
 
-.fsField {
-    order: 2;
-    /* Place input field below helper text*/
-}
+.fsForm textarea,
+.fsForm textarea.fsRequired {
+  padding: 12px 10px; }
+
+.fsBody fieldset {
+  margin-bottom: 3rem; }
+
+.fsRowBody input[type="checkbox"]:before,
+.fsRowBody input[type="radio"]:before {
+  border-color: #000000; }
+
+.fsRowBody input[type="checkbox"]:checked:before {
+  border-color: #0050D8;
+  background-color: #0050D8; }
+
+.fsRowBody input[type="radio"]:checked:before {
+  border-color: #0050D8; }
+
+.fsFieldFocused:not(.fsValidationError).fsSpan100 {
+  padding: inherit !important;
+  margin: inherit !important; }
+
+/********/
+/* Helper Text */
+/********/
+.fsFieldCell > .fsSupporting,
+.fieldset-content > .fsSupporting {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: #3D4551;
+  margin-bottom: .8rem; }
+
+/*
+  Supporting Text in subFields must keep their small font-size.
+  Or else the text in Address Blocks (like "ZIP Code") won't fit.
+*/
+.fsSubField > .fsSupporting {
+  color: #3D4551;
+  margin-bottom: .8rem; }
+
+.fsBody .fieldset-content .always-ltr {
+  margin-top: .8rem; }
+
+/*
+  If .fsSupporting comes before .always-ltr (ex: for the Time Picker Widget)
+  then let ".fsSubField > .fsSupporting" control the margin between them.
+*/
+.fsBody .fieldset-content .fsSupporting + .always-ltr {
+  margin-top: 0rem; }
+
+/********/
+/* Error Handling */
+/********/
+.fsValidationError input[type="text"].fsRequired,
+.fsValidationError input[type="email"].fsRequired,
+.fsValidationError input[type="number"].fsRequired,
+.fsValidationError input[type="tel"].fsRequired,
+.fsValidationError select.fsRequired,
+.fsValidationError textarea.fsRequired,
+.fsValidationError .fsSignature.fsRequired {
+  border-color: #D63E04 !important;
+  /* Need to Override Formstack's !important css */ }
+
+/********/
+/* Buttons */
+/********/
+.coa-button, .fsSubmitButton, .fsPreviousButton, .fsNextButton {
+  height: 4.8rem;
+  border-radius: .4rem !important; }
+
+.fsSubmitButton {
+  background-color: #0050D8 !important;
+  color: #FFFFFF !important; }
+  .fsSubmitButton:hover {
+    background-color: #2672DE !important; }
+
+.fsPreviousButton, .fsNextButton {
+  border-width: .2rem;
+  border-color: #0050D8 !important;
+  background-color: #FFFFFF !important;
+  color: #0050D8 !important; }
+  .fsPreviousButton:hover, .fsNextButton:hover {
+    background-color: #EFF6FB !important; }
     </style>
 </head>
 

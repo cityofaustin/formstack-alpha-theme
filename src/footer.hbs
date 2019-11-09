@@ -1,12 +1,17 @@
 <div>
   {{#unless isProduction}}
-    <!-- Add modified Formstack source code for debugging and Handlebar compatibility -->
+    <!-- Add modified Formstack source code only for Preview builds -->
+    <!-- Use it for debugging -->
+    <!-- It's been lightly modified from its original version for Handlebar compatibility -->
     <script type="text/javascript">
       {{> Formstack }}
     </script>
   {{/unless}}
   <script type="text/javascript">
     {{> moveHelperText }}
+  </script>
+  <script type="text/javascript">
+    {{> removeIframeMargins }}
   </script>
   <script type="text/javascript">
     {{> renderBody }}
