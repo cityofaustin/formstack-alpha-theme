@@ -1,3 +1,5 @@
+$ = jQuery;
+
 // gracias: https://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t
 function inIframe () {
     try {
@@ -8,7 +10,9 @@ function inIframe () {
 }
 
 if (inIframe()) {
-  console.log("~~~ We are in an iframe")
-} else {
-  console.log("~~~ We are not in an iframe")
+  // Remove form's margin and padding if we are embedded within an iFrame
+  $('.fsBody .fsForm').css({
+    margin: "0px",
+    padding: "0px",
+  })
 }

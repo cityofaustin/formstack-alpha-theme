@@ -1803,6 +1803,11 @@ html:not([data-scroll='0']) .survey-mode.fsBody .fsForm .survey-header {
 .fsBody fieldset {
   margin-bottom: 3rem; }
 
+.fsBody .fieldset-content .always-ltr span {
+  top: 10px;
+  font-size: 1.6rem;
+  height: 4.8rem; }
+
 .fsRowBody input[type="checkbox"]:before,
 .fsRowBody input[type="radio"]:before {
   border-color: #000000; }
@@ -1817,6 +1822,19 @@ html:not([data-scroll='0']) .survey-mode.fsBody .fsForm .survey-header {
 .fsFieldFocused:not(.fsValidationError).fsSpan100 {
   padding: inherit !important;
   margin: inherit !important; }
+
+.fsCurrency {
+  line-height: 4.8rem;
+  font-size: 1.6rem;
+  width: 10px; }
+
+/*
+  .fsCurrency will always be 15px wide (10px + 5px margin-right)
+  The sibling input field must fill the space minus 15px.
+  Overrides similar calculation in default Formstack styles.
+*/
+.fsCurrency ~ input.fsField {
+  width: calc(100% - 15px) !important; }
 
 /********/
 /* Helper Text */
