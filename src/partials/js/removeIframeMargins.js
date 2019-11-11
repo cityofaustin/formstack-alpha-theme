@@ -15,4 +15,7 @@ if (inIframe()) {
     margin: "0px",
     padding: "0px",
   })
+  $('.fsBody').css({
+    padding: "0px",
+  })
 }
