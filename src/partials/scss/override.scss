@@ -60,7 +60,7 @@
       visibility: visible;
       top: 0;
       left: 0;
-      content: "(Required)";
+      content: attr(data-content); // Value is set in translate.js
       font-size: 1.8rem;
       font-weight: 700;
       color: #D63E04;

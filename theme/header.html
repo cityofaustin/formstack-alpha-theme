@@ -9,7 +9,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="" />
     <meta name="twitter:site" content="@formstack" />
-    <meta name="twitter:title" content="NI Request Day Laborer" />
+    <meta name="twitter:title" content="Formstack Form - City of Austin Forms" />
     <meta name="twitter:description" content="Formstack Form - City of Austin Forms" />
     <meta name="twitter:app:name:iphone" content="Formstack Forms" />
     <meta name="twitter:app:name:ipad" content="Formstack Forms" />
@@ -41,6 +41,20 @@
 
     <!-- COA Import iframeResizer library code -->
     <script>
+        window.iFrameResizer = {
+          onMessage: function(message) {
+            console.log("~~~ Got a message from parent: ", message)
+          },
+          onReady: function() {
+            debugger;
+            console.log("Now we're ready.")
+          },
+          readyCallback: function() {
+            console.log("~~maybe?")
+          }
+        }
+    </script>
+    <script>
         /*
           This code allows our iframe-embedded form to automatically resize within Janis.
           The Janis page that hosts this iframed form must also include the companion code from:
@@ -66,7 +80,7 @@ html {
 }
 
 body {
-    display: none; /* COA addition to hide flickering styles. Will re-display body in footer script. */
+    visibility: hidden; /* COA addition to hide flickering styles. Will re-display body in footer script. */
 		background-color: #ffffff;
 }
 
@@ -1747,7 +1761,7 @@ html:not([data-scroll='0']) .survey-mode.fsBody .fsForm .survey-header {
     visibility: visible;
     top: 0;
     left: 0;
-    content: "(Required)";
+    content: attr(data-content);
     font-size: 1.8rem;
     font-weight: 700;
     color: #D63E04; }
