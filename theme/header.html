@@ -41,20 +41,6 @@
 
     <!-- COA Import iframeResizer library code -->
     <script>
-        window.iFrameResizer = {
-          onMessage: function(message) {
-            console.log("~~~ Got a message from parent: ", message)
-          },
-          onReady: function() {
-            debugger;
-            console.log("Now we're ready.")
-          },
-          readyCallback: function() {
-            console.log("~~maybe?")
-          }
-        }
-    </script>
-    <script>
         /*
           This code allows our iframe-embedded form to automatically resize within Janis.
           The Janis page that hosts this iframed form must also include the companion code from:
