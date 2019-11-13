@@ -1807,30 +1807,12 @@ html:not([data-scroll='0']) .survey-mode.fsBody .fsForm .survey-header {
 /********/
 /* Radio and Checkbox fields */
 /********/
-.fsRowBody input[type="checkbox"],
-.fsRowBody input[type="radio"] {
-  top: .3rem; }
-  .fsRowBody input[type="checkbox"]:before,
-  .fsRowBody input[type="radio"]:before {
-    border-color: #000000; }
-
 .fsRowBody input[type="checkbox"]:checked:before {
   border-color: #0050D8;
   background-color: #0050D8; }
 
 .fsRowBody input[type="radio"]:checked:before {
   border-color: #0050D8; }
-
-label.fsOptionLabel {
-  font-size: 1.6rem;
-  line-height: 2rem;
-  color: #212121; }
-  @media (max-width: 40em) {
-    label.fsOptionLabel {
-      border: 2px solid #000;
-      border-radius: 4px;
-      background-color: #f1f3f6;
-      color: #212121; } }
 
 .fsFieldFocused:not(.fsValidationError).fsSpan100 {
   padding: inherit !important;
@@ -1895,14 +1877,6 @@ label.fsOptionLabel {
 /********/
 /* Error Handling */
 /********/
-div.fsError {
-  color: #D63E04;
-  font-size: 1.6rem;
-  line-height: 2rem;
-  text-align: left; }
-  div.fsError strong {
-    display: block; }
-
 .fsValidationError input[type="text"].fsRequired,
 .fsValidationError input[type="email"].fsRequired,
 .fsValidationError input[type="number"].fsRequired,
@@ -1912,16 +1886,6 @@ div.fsError {
 .fsValidationError .fsSignature.fsRequired {
   border-color: #D63E04 !important;
   /* Need to Override Formstack's !important css */ }
-
-.fsValidationError .fsLabel,
-.fsValidationError .fsRequiredLabel,
-.fsValidationError .fsRequiredMarker {
-  color: #D63E04 !important; }
-
-.fsValidationError .fsMatrix,
-.fsValidationError .fsOptionLabel,
-.fsValidationError .fsSupporting {
-  color: #3D4551 !important; }
 
 .fsFieldRow .fsFieldCell.fsValidationError {
   margin-left: .5rem;

@@ -116,14 +116,14 @@
 /********/
 /* Radio and Checkbox fields */
 /********/
-.fsRowBody input[type="checkbox"],
-.fsRowBody input[type="radio"] {
-  top: .3rem;
-
-  &:before {
-    border-color: #000000;
-  }
-}
+// .fsRowBody input[type="checkbox"],
+// .fsRowBody input[type="radio"] {
+//   top: .3rem;
+//
+//   &:before {
+//     border-color: #000000;
+//   }
+// }
 
 .fsRowBody input[type="checkbox"]:checked:before {
   border-color: #0050D8;
@@ -135,24 +135,24 @@
 }
 
 // Formstack's smallest breakpoint
-@mixin formstack-sm {
-  @media (max-width: 40em) {
-    @content;
-  }
-}
-
-label.fsOptionLabel {
-  font-size: 1.6rem;
-  line-height: 2rem;
-  color: #212121;
-
-  @include formstack-sm {
-    border: 2px solid #000;
-    border-radius: 4px;
-    background-color: #f1f3f6;
-    color: #212121;
-  }
-}
+// @mixin formstack-sm {
+//   @media (max-width: 40em) {
+//     @content;
+//   }
+// }
+//
+// label.fsOptionLabel {
+//   font-size: 1.6rem;
+//   line-height: 2rem;
+//   color: #212121;
+//
+//   @include formstack-sm {
+//     border: 2px solid #000;
+//     border-radius: 4px;
+//     background-color: #f1f3f6;
+//     color: #212121;
+//   }
+// }
 
 // Undo Fromstack's margin/padding overrides on checkbox and radio fields on focus
 .fsFieldFocused:not(.fsValidationError).fsSpan100 {
@@ -233,16 +233,16 @@ label.fsOptionLabel {
 /********/
 /* Error Handling */
 /********/
-div.fsError {
-  color: #D63E04;
-  font-size: 1.6rem;
-  line-height: 2rem;
-  text-align: left;
-
-  strong {
-    display: block;
-  }
-}
+// div.fsError {
+//   color: #D63E04;
+//   font-size: 1.6rem;
+//   line-height: 2rem;
+//   text-align: left;
+//
+//   strong {
+//     display: block;
+//   }
+// }
 
 .fsValidationError {
   input[type="text"].fsRequired,
@@ -255,18 +255,18 @@ div.fsError {
       @extend .coa-field;
       border-color: #D63E04 !important; /* Need to Override Formstack's !important css */
   }
-
-  .fsLabel,
-  .fsRequiredLabel,
-  .fsRequiredMarker {
-    color: #D63E04 !important;
-  }
-
-  .fsMatrix,
-  .fsOptionLabel,
-  .fsSupporting {
-    color: #3D4551 !important;
-  }
+  //
+  // .fsLabel,
+  // .fsRequiredLabel,
+  // .fsRequiredMarker {
+  //   color: #D63E04 !important;
+  // }
+  //
+  // .fsMatrix,
+  // .fsOptionLabel,
+  // .fsSupporting {
+  //   color: #3D4551 !important;
+  // }
 }
 
 .fsFieldRow .fsFieldCell.fsValidationError {
