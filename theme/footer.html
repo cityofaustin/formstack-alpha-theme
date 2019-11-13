@@ -1,6 +1,6 @@
 <div>
   <script type="text/javascript">
-    // Add handlebar Footer js partials to this function. 
+    // Add handlebar Footer js partials to this function.
     function runFooterJs() {
       $ = jQuery;
       
@@ -93,7 +93,7 @@
       // Handle locale-specific style/content requirements
       function translate () {
         // Set "(Required)" text
-        $('.fsRequiredMarker').attr("data-content", "(" + getDefinition("required") + ")")
+        $('.fsRequiredMarker').text("(" + getDefinition("required") + ")")
       
         adjustAddressLabels();
       }
@@ -102,6 +102,30 @@
       // Readjust address labels on resize
       // (only works for non-iframed forms)
       window.addEventListener('resize', adjustAddressLabels, false);
+      $ = jQuery;
+      
+      // Add Calendar Material Icon for jQuery datepicker
+      function addCalendarIcon() {
+        $('.fsCalendar').each(function(i) {
+          var calendarLink = $(this);
+          var calendarTrigger = $(calendarLink.siblings('.ui-datepicker-trigger'));
+          var newCalendarIcon = $('<i></i>')
+            .addClass("material-icons coa-calendar-icon")
+            .text("calendar_today")
+            .attr({
+              "alt": "Select Date",
+              "title": "Select Date",
+              "aria-hidden": true,
+            })
+            .click(function(){
+              calendarTrigger.trigger('click')
+            })
+          newCalendarIcon.insertBefore(calendarLink);
+        });
+      }
+      
+      // Can only modify calendar icon after Formstack's 'load' callback
+      window.addEventListener('load', addCalendarIcon, false);
       $ = jQuery;
       
       // Display the body after our js and css has finished loading

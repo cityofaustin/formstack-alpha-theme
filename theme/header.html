@@ -21,6 +21,8 @@
 
     <!-- COA Import Custom Google Font -->
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <!-- COA Import Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="icon" type="image/x-icon" href="//www.formstack.com/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="//static.formstack.com/forms/css/3/reset_53bc1bb20a.css">
@@ -1741,16 +1743,9 @@ html:not([data-scroll='0']) .survey-mode.fsBody .fsForm .survey-header {
 
 .fsRequiredMarker {
   font-size: 1.8rem;
-  visibility: hidden;
-  position: relative; }
-  .fsRequiredMarker:after {
-    visibility: visible;
-    top: 0;
-    left: 0;
-    content: attr(data-content);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #D63E04; }
+  font-weight: 700;
+  color: #D63E04;
+  margin-left: 1rem !important; }
 
 /********/
 /* Fields */
@@ -1918,6 +1913,21 @@ html:not([data-scroll='0']) .survey-mode.fsBody .fsForm .survey-header {
   font-size: 1.7rem;
   font-weight: 400;
   color: #212121; }
+
+/********/
+/* Datepicker */
+/********/
+.coa-calendar-icon {
+  cursor: pointer;
+  color: #0050d8;
+  font-size: 3rem;
+  line-height: 5rem;
+  margin-left: 1rem; }
+
+.fsBody .ui-datepicker-trigger {
+  visibility: hidden;
+  width: 0px;
+  height: 0px; }
     </style>
 </head>
 

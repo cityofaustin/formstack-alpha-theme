@@ -48,7 +48,7 @@ function adjustAddressLabels() {
 // Handle locale-specific style/content requirements
 function translate () {
   // Set "(Required)" text
-  $('.fsRequiredMarker').attr("data-content", "(" + getDefinition("required") + ")")
+  $('.fsRequiredMarker').text("(" + getDefinition("required") + ")")
 
   adjustAddressLabels();
 }

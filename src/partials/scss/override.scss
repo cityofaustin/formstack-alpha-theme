@@ -53,18 +53,9 @@
 
 .fsRequiredMarker {
     font-size: 1.8rem;
-    visibility: hidden;
-    position: relative;
-
-    &:after {
-      visibility: visible;
-      top: 0;
-      left: 0;
-      content: attr(data-content); // Value is set in translate.js
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #D63E04;
-    }
+    font-weight: 700;
+    color: #D63E04;
+    margin-left: 1rem !important; // override Formstack
 }
 
 /********/
@@ -259,4 +250,21 @@
     font-size: 1.7rem;
     font-weight: 400;
     color: #212121;
+}
+
+/********/
+/* Datepicker */
+/********/
+.coa-calendar-icon {
+  cursor: pointer;
+  color: #0050d8;
+  font-size: 3rem;
+  line-height: 5rem;
+  margin-left: 1rem;
+}
+
+.fsBody .ui-datepicker-trigger {
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
