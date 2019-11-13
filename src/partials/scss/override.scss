@@ -157,6 +157,21 @@
 }
 
 /********/
+/* Focus */
+/********/
+.fsForm {
+  input,
+  textarea,
+  select {
+    &:focus {
+      // Need to override formstack !important outline styles
+      outline: .2rem dotted #aeb0b5 !important;
+      outline-offset: .3rem !important;
+    }
+  }
+}
+
+/********/
 /* Helper Text */
 /********/
 .fsFieldCell > .fsSupporting,
