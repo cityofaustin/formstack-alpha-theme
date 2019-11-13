@@ -127,3 +127,6 @@ src="docs/images/preview.png"
 alt-text="Preview" width="400" >
 
 Don't worry. Your changes will work on the Live site once you "Save and activate." You can check by going to "View Site Live." You can also run `yarn preview` to see how your styles look on our demo form.
+
+### Confirmation Page themes won't render with local Preview
+Themes only get applied to the Confirmation Page when they are "Saved and activated". So the Confirmation Page you get when using `yarn preview` won't use your local template, it will pull its styling directly from Formstack. You'll have to "Save and activate" your custom Header and Footer HTML on Formstack in order to see style changes to the Confirmation Page.
