@@ -179,6 +179,33 @@ label.fsOptionLabel {
 }
 
 /********/
+/* Address Fields */
+/********/
+.fsBody .fsSubField.fsFieldAddress,
+.fsBody .fsSubField.fsFieldAddress2,
+.fsBody .fsSubField.fsFieldCity,
+.fsBody .fsSubField.fsFieldState,
+.fsBody .fsSubField.fsFieldZip {
+  margin-bottom: 1rem;
+}
+
+.fsBody .fsSubField {
+  float: inherit;
+}
+
+.fsBody .fsSubField.fsFieldCity {
+  width: 100%;
+}
+
+.fsBody .fsSubField.fsFieldState {
+  width: fit-content;
+}
+
+.fsBody .fsSubField.fsFieldZip {
+  width: fit-content;
+}
+
+/********/
 /* Focus */
 /********/
 // Not using .fsFieldFocused here, otherwise every input in an address block would be highlighted
@@ -202,7 +229,8 @@ label.fsOptionLabel {
 /* Helper Text */
 /********/
 .fsFieldCell > .fsSupporting,
-.fieldset-content > .fsSupporting {
+.fieldset-content > .fsSupporting,
+.fsBody .fsSubField label {
     font-size: 1.6rem;
     line-height: 2rem;
     color: #3D4551;
@@ -255,7 +283,7 @@ div.fsError {
       @extend .coa-field;
       border-color: #D63E04 !important; /* Need to Override Formstack's !important css */
   }
-  
+
   .fsLabel,
   .fsRequiredLabel,
   .fsRequiredMarker {
