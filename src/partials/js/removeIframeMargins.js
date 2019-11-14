@@ -13,7 +13,7 @@ if (inIframe()) {
   // Remove form's margin and padding if we are embedded within an iFrame
   $('.fsBody .fsForm').css({
     margin: "0px",
-    padding: "0px",
+    padding: "0px .5rem",
   })
   $('.fsBody').css({
     padding: "0px",
