@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn build-css && node ./build/render.js",
-    "build-css": "node-sass-chokidar ./src/partials/scss -o ./src/partials/scss",
-    "watch-css": "node-sass-chokidar ./src/partials/scss -o ./src/partials/scss -w",
+    "build-css": "node-sass-chokidar ./src/partials/scss -o ./src/partials/scss --output-style compressed",
+    "watch-css": "node-sass-chokidar ./src/partials/scss -o ./src/partials/scss --output-style compressed -w",
     "start-preview-server": "node ./build/preview.js",
     "start-preview-processes": "npm-run-all -p start-preview-server watch-css",
     "preview": "yarn build-css && yarn start-preview-processes"

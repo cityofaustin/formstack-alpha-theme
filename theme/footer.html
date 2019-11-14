@@ -1,53 +1,160 @@
 <div>
   <script type="text/javascript">
-    $ = jQuery;
-    
-    // Moves helper text from below its field to above its field
-    var helperTexts = $(".fsSupporting");
-    for (i=0; i < helperTexts.length; i++) {
-      var helperText = $(helperTexts[i]);
-      var parent = helperText.parent();
-      helperText.detach();
-      var label = parent.children('.fsLabel');
-      if (label.length) {
-        // If the field's label is in the helperText's parent
-        // then insert the helperText after the label
-        helperText.insertAfter(label);
-      } else {
-        // If the field's label is not in the helperText's parent
-        // (for ex: in <fieldset/> structures)
-        // then insert the helper text at the top of the parent element
-        helperText.prependTo(parent);
-      }
-    }
-  </script>
-  <script type="text/javascript">
-    $ = jQuery;
-    
-    // gracias: https://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t
-    function inIframe () {
-        try {
-            return window.self !== window.top;
-        } catch (e) {
-            return true;
+    // Add handlebar Footer js partials to this function.
+    function runFooterJs() {
+      $ = jQuery;
+      
+      // Moves helper text from below its field to above its field
+      var helperTexts = $(".fsSupporting");
+      for (i=0; i < helperTexts.length; i++) {
+        var helperText = $(helperTexts[i]);
+        var parent = helperText.parent();
+        helperText.detach();
+        var label = parent.children('.fsLabel');
+        if (label.length) {
+          // If the field's label is in the helperText's parent
+          // then insert the helperText after the label
+          helperText.insertAfter(label);
+        } else {
+          // If the field's label is not in the helperText's parent
+          // (for ex: in <fieldset/> structures)
+          // then insert the helper text at the top of the parent element
+          helperText.prependTo(parent);
         }
+      }
+      $ = jQuery;
+      
+      // gracias: https://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t
+      function inIframe () {
+          try {
+              return window.self !== window.top;
+          } catch (e) {
+              return true;
+          }
+      }
+      
+      if (inIframe()) {
+        // Remove form's margin and padding if we are embedded within an iFrame
+        $('.fsBody .fsForm').css({
+          margin: "0px",
+          padding: "0px",
+        })
+        $('.fsBody').css({
+          padding: "0px",
+        })
+      }
+      $ = jQuery;
+      
+      // "lang" attribute seems like the most reliable way to find out what language a form is using.
+      // Fallback to "en" just in case
+      var locale = $(".fsRowBody").attr("lang") || "en";
+      
+      var langDefinitions = {
+        "required": {
+          "en": "Required",
+          "es": "Obligatoria"
+        }
+      }
+      
+      function getDefinition(val) {
+        var definition = langDefinitions[val];
+        if (definition) {
+          return definition[locale] || definition["en"];
+        } else {
+          return "";
+        }
+      }
+      
+      // Adjust height of address fields in Spanish to match height of "Código postal (Zip Code)" label
+      // But only adjust height of fields that are on the same line as zip code.
+      // Recalculate on screen size change.
+      function adjustAddressLabels() {
+        if (locale === "es") {
+          $('.fsFieldZip').each(function(i){
+            var zipField = $(this);
+            var zipLabel = zipField.children('label')
+            var zipLabelHeight = zipLabel.height();
+            if (zipLabelHeight) {
+              var zipLabelTop = zipLabel.position().top;
+              zipField.siblings().each(function(i){
+                var sibling = $(this);
+                var siblingLabel = sibling.children('label');
+                if (siblingLabel.position().top === zipLabelTop) {
+                  siblingLabel.height(zipLabelHeight);
+                } else {
+                  siblingLabel.height('auto');
+                }
+              });
+            }
+          });
+        }
+      }
+      
+      // Handle locale-specific style/content requirements
+      function translate () {
+        // Set "(Required)" text
+        $('.fsRequiredMarker').text("(" + getDefinition("required") + ")")
+      
+        adjustAddressLabels();
+      }
+      translate();
+      
+      // Readjust address labels on resize
+      // (only works for non-iframed forms)
+      window.addEventListener('resize', adjustAddressLabels, false);
+      $ = jQuery;
+      
+      // Add Calendar Material Icon for jQuery datepicker
+      function addCalendarIcon() {
+        $('.fsCalendar').each(function(i) {
+          var calendarLink = $(this);
+          var calendarTrigger = $(calendarLink.siblings('.ui-datepicker-trigger'));
+          var newCalendarIcon = $('<i></i>')
+            .addClass("material-icons coa-calendar-icon")
+            .text("calendar_today")
+            .attr({
+              "alt": "Select Date",
+              "title": "Select Date",
+              "aria-hidden": true,
+            })
+            .click(function(){
+              calendarTrigger.trigger('click')
+            })
+          newCalendarIcon.insertBefore(calendarLink);
+        });
+      }
+      
+      // Can only modify calendar icon after Formstack's 'load' callback
+      window.addEventListener('load', addCalendarIcon, false);
+      $ = jQuery;
+      
+      // Display the body after our js and css has finished loading
+      $('body').css('visibility', 'inherit')
     }
-    
-    if (inIframe()) {
-      // Remove form's margin and padding if we are embedded within an iFrame
-      $('.fsBody .fsForm').css({
-        margin: "0px",
-        padding: "0px",
-      })
-      $('.fsBody').css({
-        padding: "0px",
-      })
+
+    function addJQuery(cb){
+      var currentElement = document.currentScript;
+      var scriptNode = document.createElement('script');
+      scriptNode.setAttribute('src', 'https://code.jquery.com/jquery-3.4.1.min.js');
+      scriptNode.setAttribute('integrity', 'sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=');
+      scriptNode.setAttribute('crossorigin', 'anonymous');
+      scriptNode.setAttribute('async', 'false');
+      scriptNode.onload = cb;
+      currentElement.parentNode.insertBefore(scriptNode, currentElement.nextSibling);
     }
-  </script>
-  <script type="text/javascript">
-    $ = jQuery;
-    
-    // Display the body after our js and css has finished loading
-    $('body').css('display', 'inherit')
+
+    /*
+      The Footer js requires jQuery.
+      The normal form body generated by Formstack loads jQuery.
+      However the confirmation page body does not load jQuery.
+      Therefore, we must manually load jQuery (for the sake of js working on the confirmation page), but only if jQuery is not already loaded.
+      We accomplish this by appending a <script/> tag to the Footer which sources jQuery.
+      The "onload" callback of the script tag will run our Footer js.
+    */
+    if (window.jQuery) {
+      runFooterJs()
+    } else {
+      addJQuery(runFooterJs)
+    }
   </script>
 </div>
