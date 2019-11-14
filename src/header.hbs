@@ -42,7 +42,7 @@
     <![endif]-->
 
     <!-- COA Import iframeResizer library code -->
-    <script>
+    <script type="text/javascript">
         {{> iframeResizer }}
     </script>
     <!-- COA Import Default Formstack Styles -->
@@ -55,6 +55,12 @@
 /* Alert! css Partial is left-align deliberately for Formstack compiler. See README for details. */
 {{> override }}
     </style>
+    {{#unless isProduction}}
+    <script type="text/javascript">
+/* Alert! css Partial is left-align deliberately for Formstack compiler. See README for details. */
+{{> compilerMock }}
+    </script>
+    {{/unless}}
 </head>
 
 {{#if isProduction}}
