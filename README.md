@@ -50,7 +50,15 @@ For clarity, please add a `<!-- COA Import ... -->` comment above any new Partia
 
 This will allow you to see how your styles render on a real form.
 
-Pressing "Submit" will create a new submission in Formstack. This is perfectly ok to do with the demo form. But it's something to be mindful of if you decide to use a different form.
+#### Submitting on Preview
+
+Pressing "Submit" will create a new submission in Formstack. This is perfectly ok to do with the demo forms included in this repo. But it's something to be mindful of if you decide to use a different form.
+
+#### Confirmation Page on Preview
+
+Themes only get applied to the Confirmation Page when they are “Saved and activated”. So the Confirmation Page you get when using the local `yarn preview` won’t use your local template, it will pull its styling directly from Formstack. You’ll have to “Save and activate” your custom Header and Footer HTML on Formstack in order to see style changes to the Confirmation Page.
+
+#### To Preview your own form
 
 If you want to plug in a different form to use, you'll have to manually retrieve it from Formstack's API using `/build/getDemoFormBody.js`. Copy `template.env` into a `.env` file, plug in your Formstack credentials, and run `node /build/getDemoFormBody.js`. Plug in your own DEMO_FORM_BODY_PARTIAL .env variable to use it in Preview.
 
@@ -123,7 +131,7 @@ And if you surpass it, the css stylesheets will load incompletely. If you surpas
 
 The circumvent this issue, we compress the css that we add with node-sass-chokidor.
 
-### Formstack Preview won't work
+### Formstack's Preview won't work
 When editing themes using the GUI or the "CSS" tab in the "Advanced Code Editor," your changes will instantly be rendered in the Preview window on the righthand side.
 
 However, changes made in the "Header HTML" tab don't register in the Preview.
@@ -132,6 +140,3 @@ src="docs/images/preview.png"
 alt-text="Preview" width="400" >
 
 Don't worry. Your changes will work on the Live site once you "Save and activate." You can check by going to "View Site Live." You can also run `yarn preview` to see how your styles look on our demo form.
-
-### Confirmation Page themes won't render with local Preview
-Themes only get applied to the Confirmation Page when they are "Saved and activated". So the Confirmation Page you get when using `yarn preview` won't use your local template, it will pull its styling directly from Formstack. You'll have to "Save and activate" your custom Header and Footer HTML on Formstack in order to see style changes to the Confirmation Page.
