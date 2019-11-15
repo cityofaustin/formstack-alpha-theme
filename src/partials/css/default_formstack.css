@@ -1,10 +1,6 @@
-/* This file contains the default Formstack styles */
-html {
-    font-size: 62.5%; /* COA addition to allow us to use rem */
-}
+/* This file contains the default Formstack styles from original HeaderHTML field in GUI */
 
 body {
-    visibility: hidden; /* COA addition to hide flickering styles. Will re-display body in footer script. */
 		background-color: #ffffff;
 }
 
