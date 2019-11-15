@@ -129,7 +129,7 @@ But once there are two \<style\> tags, the css for both must be all the way left
 ### There is an undocumented size limit to the Header HTML
 And if you surpass it, the css stylesheets will load incompletely. If you surpass the size limit a little bit more, your form will not render at all.
 
-The circumvent this issue, we compress the css that we add with node-sass-chokidor.
+To circumvent this issue, we compress the css that we add with node-sass-chokidor.
 
 ### Formstack's Preview won't work
 When editing themes using the GUI or the "CSS" tab in the "Advanced Code Editor," your changes will instantly be rendered in the Preview window on the righthand side.
