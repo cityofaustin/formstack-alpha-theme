@@ -181,16 +181,9 @@ label.fsOptionLabel {
 /********/
 /* Address Fields */
 /********/
-.fsBody .fsSubField.fsFieldAddress,
-.fsBody .fsSubField.fsFieldAddress2,
-.fsBody .fsSubField.fsFieldCity,
-.fsBody .fsSubField.fsFieldState,
-.fsBody .fsSubField.fsFieldZip {
-  margin-bottom: 1rem;
-}
-
 .fsBody .fsSubField {
-  float: inherit;
+  float: inherit; // remove float:left which moves fields onto the same line
+  margin-bottom: 1rem;
 }
 
 .fsBody .fsSubField.fsFieldCity {
