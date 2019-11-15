@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const uglifycss = require('uglifycss');
 const Handlebars = require('handlebars');
 
 console.log("Starting build");
@@ -25,7 +26,13 @@ for (let dir of fs.readdirSync(partialsDir)) {
           as the Partial "{{> iframeResizer }}"
         */
         const partialName = path.basename(file, path.extname(file));
-        const partialContents = readFile(path.resolve(subDir, file));
+        let partialContents = readFile(path.resolve(subDir, file));
+        if (file.match(/\.css$/)){
+          // Compresses css partials
+          partialContents = uglifycss.processString(partialContents, {
+            "uglyComments": true,
+          })
+        }
         Handlebars.registerPartial(partialName, partialContents);
       }
     }

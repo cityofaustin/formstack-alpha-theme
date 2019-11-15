@@ -14,7 +14,9 @@
     "preview": "yarn build-css && yarn start-preview-processes"
   },
   "dependencies": {
-    "handlebars": "^4.5.1"
+    "handlebars": "^4.5.1",
+    "node-sass-chokidar": "^1.4.0",
+    "uglifycss": "^0.0.29"
   },
   "devDependencies": {
     "axios": "^0.19.0",
@@ -23,7 +25,6 @@
     "express": "^4.17.1",
     "hbs": "^4.0.6",
     "hbs-utils": "^0.0.4",
-    "node-sass-chokidar": "^1.4.0",
     "npm-run-all": "^4.1.5",
     "pretty": "^2.0.0"
   }
