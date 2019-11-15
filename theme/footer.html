@@ -4,6 +4,10 @@
     function runFooterJs() {
       $ = jQuery;
       
+      $('.fsPagination .fsPreviousButton .fsFull').text("Back")
+      $('.fsPagination .fsNextButton .fsFull').text("Continue")
+      $ = jQuery;
+      
       // Moves helper text from below its field to above its field
       var helperTexts = $(".fsSupporting");
       for (i=0; i < helperTexts.length; i++) {
