@@ -304,23 +304,20 @@ div.fsError {
 /********/
 /* Buttons */
 /********/
-.coa-button {
+/*
+  Need to use a @mixin rather than a class.
+  Because only @mixins can be included inside of other @mixins
+  Classes can't be extended within @mixins
+  And our button styles needed to be included into a media query mixin
+*/
+@mixin coa-button() {
   height: 4.8rem;
   width: 14.5rem;
   border-radius: .4rem !important;
 }
 
-.fsSubmitButton {
-  @extend .coa-button;
-  background-color: #0050D8 !important;
-  color: #FFFFFF !important;
-  &:hover {
-    background-color: #2672DE !important;
-  }
-}
-
-.fsPreviousButton, .fsNextButton {
-  @extend .coa-button;
+@mixin coa-pagination-button() {
+  @include coa-button;
   border-width: .2rem;
   border-color: #0050D8 !important;
   background-color: #FFFFFF !important;
@@ -330,9 +327,47 @@ div.fsError {
   }
 }
 
-// @media (max-width: 699px), (device-height: 1024px) and (device-width: 768px) and (orientation: portrait), (device-height: 1024px) and (device-width: 768px) and (orientation: landscape) .fsPagination .fsNextButton, .fsPagination .fsPreviousButton {
-//   background-color: pink;
-// }
+// Breakpoint used by formstack to set mobile pagination buttons
+@mixin formstack-mobile-pagination {
+  @media all and (max-width:699px),
+  all and (device-height:1024px) and (device-width:768px) and (orientation:portrait),
+  all and (device-height:1024px) and (device-width:768px) and (orientation:landscape) {
+    @content;
+  }
+}
+
+.fsSubmitButton {
+  @include coa-button;
+  background-color: #0050D8 !important;
+  color: #FFFFFF !important;
+  &:hover {
+    background-color: #2672DE !important;
+  }
+}
+
+.fsPagination .fsPreviousButton,
+.fsPagination .fsNextButton {
+  @include coa-pagination-button;
+  @include formstack-mobile-pagination {
+    @include coa-pagination-button;
+  }
+}
+
+span.fsFull {
+  @include formstack-mobile-pagination {
+    display: inherit;
+  }
+}
+
+// Remove arrow buttons on mobile
+.fsPagination .fsPreviousButton:before,
+.fsPagination .fsNextButton:before,
+.rtl .fsPagination .fsPreviousButton:before,
+.rtl .fsPagination .fsNextButton:before {
+  @include formstack-mobile-pagination {
+    content: none;
+  }
+}
 
 /********/
 /* Confirmation Page */

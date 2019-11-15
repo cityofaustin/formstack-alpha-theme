@@ -1,4 +1,7 @@
-/* This file contains the default Formstack styles from original HeaderHTML field in GUI */
+/*
+  This file contains the default Formstack styles from original HeaderHTML field.
+  Formstack has since added additional override stylesheets.
+*/
 
 body {
 		background-color: #ffffff;

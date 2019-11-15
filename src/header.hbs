@@ -45,6 +45,12 @@
     <script type="text/javascript">
         {{> iframeResizer }}
     </script>
+    {{#unless isProduction}}
+    <script type="text/css">
+/* Alert! css Partial is left-align deliberately for Formstack compiler. See README for details. */
+{{> override_formstack }}
+    </script>
+    {{/unless}}
     <style type="text/css">
 /* Alert! css Partial is left-align deliberately for Formstack compiler. See README for details. */
 {{> default_formstack }}
