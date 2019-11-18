@@ -345,6 +345,14 @@ div.fsError {
   }
 }
 
+.fsPagination .fsSubmitButton,
+.fsPagination .fsSubmitMultipage {
+  @include formstack-mobile-pagination {
+    margin-top: 0px !important;
+    width: 14.5rem;
+  }
+}
+
 .fsPagination .fsPreviousButton,
 .fsPagination .fsNextButton {
   @include coa-pagination-button;
