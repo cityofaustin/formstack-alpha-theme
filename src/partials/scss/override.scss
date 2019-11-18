@@ -114,53 +114,6 @@
 }
 
 /********/
-/* Radio and Checkbox fields */
-/********/
-// .fsRowBody input[type="checkbox"],
-// .fsRowBody input[type="radio"] {
-//   top: .3rem;
-//
-//   &:before {
-//     border-color: #000000;
-//   }
-// }
-
-.fsRowBody input[type="checkbox"]:checked:before {
-  border-color: #0050D8;
-  background-color: #0050D8;
-}
-
-.fsRowBody input[type="radio"]:checked:before {
-  border-color: #0050D8;
-}
-
-// Formstack's smallest breakpoint
-// @mixin formstack-sm {
-//   @media (max-width: 40em) {
-//     @content;
-//   }
-// }
-//
-// label.fsOptionLabel {
-//   font-size: 1.6rem;
-//   line-height: 2rem;
-//   color: #212121;
-//
-//   @include formstack-sm {
-//     border: 2px solid #000;
-//     border-radius: 4px;
-//     background-color: #f1f3f6;
-//     color: #212121;
-//   }
-// }
-
-// Undo Fromstack's margin/padding overrides on checkbox and radio fields on focus
-.fsFieldFocused:not(.fsValidationError).fsSpan100 {
-  padding: inherit !important;
-  margin: inherit !important;
-}
-
-/********/
 /* Currency Fields */
 /********/
 .fsCurrency {
@@ -327,3 +280,52 @@
   width: 0px;
   height: 0px;
 }
+
+/********/
+/* Radio and Checkbox fields */
+/********/
+.fsRowBody input[type="checkbox"]:checked:before {
+  border-color: #0050D8;
+  background-color: #0050D8;
+}
+
+.fsRowBody input[type="radio"]:checked:before {
+  border-color: #0050D8;
+}
+
+// Formstack's smallest breakpoint
+// @mixin formstack-sm {
+//   @media (max-width: 40em) {
+//     @content;
+//   }
+// }
+//
+// label.fsOptionLabel {
+//   font-size: 1.6rem;
+//   line-height: 2rem;
+//   color: #212121;
+//
+//   @include formstack-sm {
+//     border: 2px solid #000;
+//     border-radius: 4px;
+//     background-color: #f1f3f6;
+//     color: #212121;
+//   }
+// }
+
+// Undo Fromstack's margin/padding overrides on checkbox and radio fields on focus
+.fsFieldFocused:not(.fsValidationError).fsSpan100 {
+  padding: inherit !important;
+  margin: inherit !important;
+}
+
+// 1. Uncomment this to break styles
+// .fsRowBody input[type="radio"] {
+//   top: 3px;
+// }
+
+// 2. Uncomment this to break page
+// .fsRowBody input[type="checkbox"],
+// .fsRowBody input[type="radio"] {
+//   top: 3px;
+// }
