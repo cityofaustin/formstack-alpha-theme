@@ -60,7 +60,7 @@ Themes only get applied to the Confirmation Page when they are “Saved and acti
 
 #### To Preview your own form
 
-If you want to plug in a different form to use, you'll have to manually retrieve it from Formstack's API using `/build/getDemoFormBody.js`. Copy `template.env` into a `.env` file, plug in your Formstack credentials, and run `node /build/getDemoFormBody.js`. Plug in your own DEMO_FORM_BODY_PARTIAL .env variable to use it in Preview.
+If you want to plug in a different form to use, you'll have to manually retrieve it from Formstack's API using `/build/getDemoFormBody.js`. Copy `template.env` into a `.env` file, plug in your Formstack credentials, and run `node build/getDemoFormBody.js`. Plug in your own DEMO_FORM_BODY_PARTIAL .env variable to use it in Preview.
 
 ## Wait, what?
 
