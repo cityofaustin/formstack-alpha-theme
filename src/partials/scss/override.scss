@@ -319,11 +319,12 @@ div.fsError {
 @mixin coa-pagination-button() {
   @include coa-button;
   border-width: .2rem;
-  border-color: #0050D8 !important;
-  background-color: #FFFFFF !important;
+  border-color: #D9E8f6 !important;
+  background-color: #D9E8f6 !important;
   color: #0050D8 !important;
   &:hover {
-    background-color: #EFF6FB !important;
+    background-color: #0050D8 !important;
+    color: #FFFFFF !important;
   }
 }
 
@@ -361,11 +362,6 @@ div.fsError {
   }
 }
 
-.fsPagination .fsNextButton {
-  background-color: #0050D8 !important;
-  color: #FFF !important;
-}
-
 span.fsFull {
   @include formstack-mobile-pagination {
     display: inherit;
@@ -386,11 +382,20 @@ span.fsFull {
 /* Confirmation Page */
 /********/
 .fsSectionText p {
-    font-size: 1.7rem;
-    font-weight: 400;
-    color: #212121;
-    font-family: 'IBM Plex Sans', sans-serif;
-    line-height:2.8rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #212121;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height:2.8rem;
+}
+
+.fsSectionHeading {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #212121;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height:2.8rem;
+  background-color: #FF1493;
 }
 
 /********/

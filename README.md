@@ -9,7 +9,8 @@ Using git version control on our Formstack theme allows us to protect our styles
 We also gain the benefit of using our own developer IDEs and external libraries to construct our Formstack theme. This can help improve the readability of our theme. By using Handlebars templating we can easily deduce which custom pieces of code we're adding to our template. If the Formstack API ever changes, we'll know which pieces we need to port over.
 
 ## Where?
-The generated Header and Footer HTML files are located in the [theme](theme) directory.
+
+After you have edited and built your theme (see How? below), the generated Header and Footer HTML files are located in the [theme](theme) directory. 
 
 If you want to use them:
 1. Copy and paste [theme/footer.html](theme/footer.html) into the "Footer HTML" section of the "Advanced Code Editor" in your Theme Editor on Formstack.
@@ -18,7 +19,7 @@ If you want to use them:
 src="docs/images/header_html_tab.png"
 alt-text="Header HTML tab" width="400" >
 
-3. Enable your changes by entering "Save and activate" under "Save Changes".
+3. Enable your changes by entering "Save and activate" under "Save Changes". "Save and activate" will apply the theme to whatever form you are viewing on Formstack. 
   - <img
 src="docs/images/save_and_activate.png"
 alt-text="Save and activate" width="400" >
