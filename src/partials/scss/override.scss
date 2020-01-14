@@ -319,7 +319,6 @@ div.fsError {
 @mixin coa-pagination-button() {
   @include coa-button;
   border-width: .2rem;
-  border-color: #D9E8f6 !important;
   background-color: #D9E8f6 !important;
   color: #0050D8 !important;
   &:hover {
