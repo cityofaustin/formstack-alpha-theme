@@ -1,6 +1,7 @@
 /*
   From static.formstack.com/forms/css/3/default-v4_f1d5918f48.css
-  Included for experiementation, testing, and reference for developers in preview.
+  Included for experimentation, testing, and reference for developers in preview.
+  Do not include your permanent style changes in this file, instead please see scss/override.scss
 */
 
 .fsBody #fsTopLogo .reportAbuse {

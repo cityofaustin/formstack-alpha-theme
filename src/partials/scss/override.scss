@@ -165,7 +165,7 @@ label.fsOptionLabel {
   }
 }
 
-// Undo Fromstack's margin/padding overrides on checkbox and radio fields on focus
+// Undo Formstack's margin/padding overrides on checkbox and radio fields on focus
 .fsFieldFocused:not(.fsValidationError).fsSpan100 {
   padding: inherit !important;
   margin: inherit !important;
@@ -319,11 +319,11 @@ div.fsError {
 @mixin coa-pagination-button() {
   @include coa-button;
   border-width: .2rem;
-  border-color: #0050D8 !important;
-  background-color: #FFFFFF !important;
+  background-color: #D9E8f6 !important;
   color: #0050D8 !important;
   &:hover {
-    background-color: #EFF6FB !important;
+    background-color: #0050D8 !important;
+    color: #FFFFFF !important;
   }
 }
 
@@ -381,9 +381,21 @@ span.fsFull {
 /* Confirmation Page */
 /********/
 .fsSectionText p {
-    font-size: 1.7rem;
-    font-weight: 400;
-    color: #212121;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #212121;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height:2.8rem;
+}
+
+#fsSubmissionCheckmark ~ .fsSectionHeading {
+  margin-bottom: 10px;
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: 400;
+  color: #212121;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height:2.8rem;
 }
 
 /********/
