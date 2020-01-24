@@ -165,7 +165,7 @@ label.fsOptionLabel {
   }
 }
 
-// Undo Fromstack's margin/padding overrides on checkbox and radio fields on focus
+// Undo Formstack's margin/padding overrides on checkbox and radio fields on focus
 .fsFieldFocused:not(.fsValidationError).fsSpan100 {
   padding: inherit !important;
   margin: inherit !important;
