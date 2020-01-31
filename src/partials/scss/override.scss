@@ -67,7 +67,8 @@ body {
   font-size: 1.8rem;
   font-weight: 700;
   color: #d63e04;
-  margin-left: 1rem !important; // override Formstack
+  // Commenting this out as per https://github.com/cityofaustin/techstack/issues/3718#issuecomment-580518575
+//   margin-left: 1rem !important; // override Formstack
 }
 
 /********/
