@@ -15,7 +15,6 @@ dotenv.config();
   Run this script to write the body of your form to /src/partials/html/demo_form_body_[FORM_ID].html
 */
 console.log(`Fetching form ${process.env.FORM_ID}`)
-console.log()
 axios.get(`https://www.formstack.com/api/v2/form/${process.env.FORM_ID}.json`, {
   headers: {
     "Authorization": `Bearer ${process.env.FORMSTACK_ACCESS_TOKEN}`
