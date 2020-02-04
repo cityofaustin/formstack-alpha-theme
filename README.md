@@ -10,7 +10,7 @@ We also gain the benefit of using our own developer IDEs and external libraries 
 
 ## Where?
 
-After you have edited and built your theme (see How? below), the generated Header and Footer HTML files are located in the [theme](theme) directory. 
+After you have edited and built your theme (see How? below), the generated Header and Footer HTML files are located in the [theme](theme) directory.
 
 If you want to use them:
 1. Copy and paste [theme/footer.html](theme/footer.html) into the "Footer HTML" section of the "Advanced Code Editor" in your Theme Editor on Formstack.
@@ -19,7 +19,7 @@ If you want to use them:
 src="docs/images/header_html_tab.png"
 alt-text="Header HTML tab" width="400" >
 
-3. Enable your changes by entering "Save and activate" under "Save Changes". "Save and activate" will apply the theme to whatever form you are viewing on Formstack. 
+3. Enable your changes by entering "Save and activate" under "Save Changes". "Save and activate" will apply the theme to whatever form you are viewing on Formstack.
   - <img
 src="docs/images/save_and_activate.png"
 alt-text="Save and activate" width="400" >
@@ -62,6 +62,7 @@ Themes only get applied to the Confirmation Page when they are “Saved and acti
 #### To Preview your own form
 
 If you want to plug in a different form to use, you'll have to manually retrieve it from Formstack's API using `/build/getDemoFormBody.js`. Copy `template.env` into a `.env` file, plug in your Formstack credentials, and run `node build/getDemoFormBody.js`. Plug in your own DEMO_FORM_BODY_PARTIAL .env variable to use it in Preview.
+- If you get the `You do not have high enough permissions for this form` error when attempting to build your form, check to see if your form is in the *Office of Design and Delivery* folder on formstack, as permissions in other folders may draw this error.
 
 ## Wait, what?
 
