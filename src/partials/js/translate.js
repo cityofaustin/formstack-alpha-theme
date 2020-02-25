@@ -1,8 +1,6 @@
-$ = jQuery;
-
 // "lang" attribute seems like the most reliable way to find out what language a form is using.
 // Fallback to "en" just in case
-var locale = $(".fsRowBody").attr("lang") || "en";
+var locale = jQuery(".fsRowBody").attr("lang") || "en";
 
 var langDefinitions = {
   "required": {
@@ -23,6 +21,6 @@ function getDefinition(val) {
 // Handle locale-specific style/content requirements
 function translate () {
   // Set "(Required)" text
-  $('.fsRequiredMarker').text("(" + getDefinition("required") + ")")
+  jQuery('.fsRequiredMarker').text("(" + getDefinition("required") + ")")
 }
 translate();
