@@ -1,6 +1,14 @@
 /* This file contains our overrides to default Formstack styles. */
 
 /********/
+/* Variables */
+/********/
+$black-text: #212121;
+$white: #ffffff;
+$science-blue: #0050D8;
+$hover-blue: #2672de;
+
+/********/
 /* Body */
 /********/
 html {
@@ -51,7 +59,7 @@ legend {
   text-align: left;
   font-size: 3.2rem;
   font-weight: 400;
-  color: #212121;
+  color: $black-text;
   line-height: 4rem;
 }
 
@@ -59,7 +67,7 @@ legend {
 /* Field Labels */
 /********/
 .fsBody .fsLabel {
-  color: #212121;
+  color: $black-text;
   border-color: #171717;
   font-size: 1.8rem;
   font-weight: 700;
@@ -142,12 +150,12 @@ legend {
 }
 
 .fsRowBody input[type='checkbox']:checked:before {
-  border-color: #0050d8;
-  background-color: #0050d8;
+  border-color: $science-blue;
+  background-color: $science-blue;
 }
 
 .fsRowBody input[type='radio']:checked:before {
-  border-color: #0050d8;
+  border-color: $science-blue;
 }
 
 // Formstack's smallest breakpoint
@@ -160,13 +168,13 @@ legend {
 label.fsOptionLabel {
   font-size: 1.6rem;
   line-height: 2rem;
-  color: #212121;
+  color: $black-text;
 
   @include formstack-sm {
     border: 2px solid #000;
     border-radius: 4px;
     background-color: #f1f3f6;
-    color: #212121;
+    color: $black-text;
   }
 }
 
@@ -325,15 +333,15 @@ div.fsError {
   @include coa-button;
   border-width: 0.2rem;
   background-color: #d9e8f6 !important;
-  color: #0050d8 !important;
+  color: $science-blue !important;
   &:hover {
-    background-color: #0050d8 !important;
-    color: #ffffff !important;
+    background-color: $science-blue !important;
+    color: $white !important;
   }
 }
 
-// Breakpoint used by formstack to set mobile pagination buttons
-@mixin formstack-mobile-pagination {
+// Breakpoint used by formstack to determine when to set mobile styling
+@mixin formstack-mobile {
   @media all and (max-width: 699px),
     all and (device-height: 1024px) and (device-width: 768px) and (orientation: portrait),
     all and (device-height: 1024px) and (device-width: 768px) and (orientation: landscape) {
@@ -343,16 +351,16 @@ div.fsError {
 
 .fsSubmitButton {
   @include coa-button;
-  background-color: #0050d8 !important;
-  color: #ffffff !important;
+  background-color: $science-blue !important;
+  color: $white !important;
   &:hover {
-    background-color: #2672de !important;
+    background-color: $hover-blue !important;
   }
 }
 
 .fsPagination .fsSubmitButton,
 .fsPagination .fsSubmitMultipage {
-  @include formstack-mobile-pagination {
+  @include formstack-mobile {
     margin-top: 0px !important;
     width: 14.5rem;
   }
@@ -361,13 +369,13 @@ div.fsError {
 .fsPagination .fsPreviousButton,
 .fsPagination .fsNextButton {
   @include coa-pagination-button;
-  @include formstack-mobile-pagination {
+  @include formstack-mobile {
     @include coa-pagination-button;
   }
 }
 
 span.fsFull {
-  @include formstack-mobile-pagination {
+  @include formstack-mobile {
     display: inherit;
   }
 }
@@ -377,7 +385,7 @@ span.fsFull {
 .fsPagination .fsNextButton:before,
 .rtl .fsPagination .fsPreviousButton:before,
 .rtl .fsPagination .fsNextButton:before {
-  @include formstack-mobile-pagination {
+  @include formstack-mobile {
     content: none;
   }
 }
@@ -388,7 +396,7 @@ span.fsFull {
 .fsSectionText p {
   font-size: 1.7rem;
   font-weight: 400;
-  color: #212121;
+  color: $black-text;
   font-family: 'IBM Plex Sans', sans-serif;
   line-height:2.8rem;
 }
@@ -398,7 +406,7 @@ span.fsFull {
   font-family: sans-serif;
   text-align: center;
   font-weight: 400;
-  color: #212121;
+  color: $black-text;
   font-family: 'IBM Plex Sans', sans-serif;
   line-height:2.8rem;
 }
@@ -408,7 +416,7 @@ span.fsFull {
 /********/
 .coa-calendar-icon {
   cursor: pointer;
-  color: #0050d8;
+  color: $science-blue;
   font-size: 3rem;
   line-height: 5rem;
   margin-left: 1rem;
@@ -426,4 +434,72 @@ span.fsFull {
   left: 0;
   right: 0;
   bottom: 100px;
+}
+
+/********/
+/* Save and Resume Modal */
+/********/
+$side-modal-padding: 3.2rem;
+
+// Modal Container Desktop
+.fs-modal-small .fs-ngdialog-content {
+  width: 660px;
+
+  @include formstack-mobile {
+    width: auto;
+    margin: 0 2rem;
+  }
+}
+
+// Top part of modal
+.fs-modal-small .fs-ngdialog-content .fs-form-dialog__title {
+  padding: 2.8rem $side-modal-padding 0 $side-modal-padding;
+
+  color: $black-text;
+  font-size: 3.2rem;
+  font-weight: bold;
+  letter-spacing: 0.25px;
+}
+
+// Middle part of modal
+.fs-modal-small .fs-ngdialog-content .fs-modal__middle {
+  background: none;
+  border: none;
+  padding: 0 $side-modal-padding 3.2rem $side-modal-padding;
+
+  color: $black-text;
+  font-size: 2.4rem;
+  letter-spacing: 0.15px;
+}
+
+// Bottom part of modal
+.fs-modal-small .fs-ngdialog-content .fs-modal__bottom {
+  background: #f3f3f3;
+  padding: 1.6rem 3.2rem 1.6rem 3.2rem !important;
+}
+
+.fs-btn2.fs-btn2--size_medium {
+  padding: 0 20px;
+  height: 52px;
+  line-height: 52px;
+  font-size: 1.6rem;
+  font-weight: 500 !important;
+}
+
+.fs-btn2.fs-btn2--size_medium .fs-btn2__text {
+  height: auto;
+}
+
+// "Cancel" button
+.fs-btn2.fs-btn2--style_edit-dark {
+  background: $white;
+  color: $black-text;
+}
+
+// "Save and get link" button
+.fs-btn2.fs-btn2--style_create {
+  background: $science-blue;
+  &:hover {
+    background-color: $hover-blue;
+  }
 }
