@@ -2,126 +2,117 @@
   <script type="text/javascript">
     // Add handlebar Footer js partials to this function.
     function runFooterJs() {
-      $ = jQuery;
-      
-      /*
-        Allows iframeResizer to know exactly how large the iframe should be.
-        Parent iframeResizer must use "taggedElement" method
-        https://github.com/davidjbradshaw/iframe-resizer/blob/master/docs/parent_page/options.md#heightcalculationmethod
-      */
-      $('.fsForm').attr('data-iframe-height', 'true');
-      $ = jQuery;
-      
-      $('.fsPagination .fsPreviousButton .fsFull').text("Back")
-      $('.fsPagination .fsNextButton .fsFull').text("Continue")
-      $ = jQuery;
-      
-      // Moves helper text from below its field to above its field
-      var helperTexts = $(".fsSupporting");
-      for (i=0; i < helperTexts.length; i++) {
-        var helperText = $(helperTexts[i]);
-        var parent = helperText.parent();
-        helperText.detach();
-        var label = parent.children('.fsLabel');
-        if (label.length) {
-          // If the field's label is in the helperText's parent
-          // then insert the helperText after the label
-          helperText.insertAfter(label);
-        } else {
-          // If the field's label is not in the helperText's parent
-          // (for ex: in <fieldset/> structures)
-          // then insert the helper text at the top of the parent element
-          helperText.prependTo(parent);
-        }
-      }
-      $ = jQuery;
-      
-      // gracias: https://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t
-      function inIframe () {
-          try {
-              return window.self !== window.top;
-          } catch (e) {
-              return true;
+      jQuery.noConflict();
+      // Must use jQuery explicitly instead of "$",
+      // because "$" conflicts with Prototype library required by Formstack on "Save and Resume" and "Confirmation" pages.
+      jQuery(function(jQuery){
+        /*
+          Allows iframeResizer to know exactly how large the iframe should be.
+          Parent iframeResizer must use "taggedElement" method
+          https://github.com/davidjbradshaw/iframe-resizer/blob/master/docs/parent_page/options.md#heightcalculationmethod
+        */
+        jQuery('.fsForm').attr('data-iframe-height', 'true');
+        jQuery('.fsPagination .fsPreviousButton .fsFull').text("Back")
+        jQuery('.fsPagination .fsNextButton .fsFull').text("Continue")
+        // Moves helper text from below its field to above its field
+        var helperTexts = jQuery(".fsSupporting");
+        for (i=0; i < helperTexts.length; i++) {
+          var helperText = jQuery(helperTexts[i]);
+          var parent = helperText.parent();
+          helperText.detach();
+          var label = parent.children('.fsLabel');
+          if (label.length) {
+            // If the field's label is in the helperText's parent
+            // then insert the helperText after the label
+            helperText.insertAfter(label);
+          } else {
+            // If the field's label is not in the helperText's parent
+            // (for ex: in <fieldset/> structures)
+            // then insert the helper text at the top of the parent element
+            helperText.prependTo(parent);
           }
-      }
-      
-      if (inIframe()) {
-        // Remove form's margin and padding if we are embedded within an iFrame
-        $('.fsBody .fsForm').css({
-          margin: "0px",
-          padding: "0px .5rem",
-        })
-        $('.fsBody').css({
-          padding: "0px",
-        })
-      }
-      $ = jQuery;
-      
-      // "lang" attribute seems like the most reliable way to find out what language a form is using.
-      // Fallback to "en" just in case
-      var locale = $(".fsRowBody").attr("lang") || "en";
-      
-      var langDefinitions = {
-        "required": {
-          "en": "Required",
-          "es": "Obligatoria"
         }
-      }
-      
-      function getDefinition(val) {
-        var definition = langDefinitions[val];
-        if (definition) {
-          return definition[locale] || definition["en"];
-        } else {
-          return "";
+        // gracias: https://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t
+        function inIframe () {
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
         }
-      }
-      
-      // Handle locale-specific style/content requirements
-      function translate () {
-        // Set "(Required)" text
-        $('.fsRequiredMarker').text("(" + getDefinition("required") + ")")
-      }
-      translate();
-      $ = jQuery;
-      
-      // Add Calendar Material Icon for jQuery datepicker
-      function addCalendarIcon() {
-        $('.fsCalendar').each(function(i) {
-          var calendarLink = $(this);
-          var calendarTrigger = $(calendarLink.siblings('.ui-datepicker-trigger'));
-          var newCalendarIcon = $('<i></i>')
-            .addClass("material-icons coa-calendar-icon")
-            .text("calendar_today")
-            .attr({
-              "alt": "Select Date",
-              "title": "Select Date",
-              "aria-hidden": true,
-            })
-            .click(function(){
-              calendarTrigger.trigger('click')
-            })
-          newCalendarIcon.insertBefore(calendarLink);
-        });
-      }
-      
-      // Can only modify calendar icon after Formstack's 'load' callback
-      window.addEventListener('load', addCalendarIcon, false);
-      $ = jQuery;
-      
-      // Display the body after our js and css has finished loading
-      $('body').css('visibility', 'inherit')
+
+        if (inIframe()) {
+          // Remove form's margin and padding if we are embedded within an iFrame
+          jQuery('.fsBody .fsForm').css({
+            margin: "0px",
+            padding: "0px .5rem",
+          })
+          jQuery('.fsBody').css({
+            padding: "0px",
+          })
+        }
+        // "lang" attribute seems like the most reliable way to find out what language a form is using.
+        // Fallback to "en" just in case
+        var locale = jQuery(".fsRowBody").attr("lang") || "en";
+
+        var langDefinitions = {
+          "required": {
+            "en": "Required",
+            "es": "Obligatoria"
+          }
+        }
+
+        function getDefinition(val) {
+          var definition = langDefinitions[val];
+          if (definition) {
+            return definition[locale] || definition["en"];
+          } else {
+            return "";
+          }
+        }
+
+        // Handle locale-specific style/content requirements
+        function translate () {
+          // Set "(Required)" text
+          jQuery('.fsRequiredMarker').text("(" + getDefinition("required") + ")")
+        }
+        translate();
+        // Add Calendar Material Icon for jQuery datepicker
+        function addCalendarIcon() {
+          jQuery('.fsCalendar').each(function(i) {
+            var calendarLink = jQuery(this);
+            var calendarTrigger = jQuery(calendarLink.siblings('.ui-datepicker-trigger'));
+            var newCalendarIcon = jQuery('<i></i>')
+              .addClass("material-icons coa-calendar-icon")
+              .text("calendar_today")
+              .attr({
+                "alt": "Select Date",
+                "title": "Select Date",
+                "aria-hidden": true,
+              })
+              .click(function(){
+                calendarTrigger.trigger('click')
+              })
+            newCalendarIcon.insertBefore(calendarLink);
+          });
+        }
+
+        // Can only modify calendar icon after Formstack's 'load' callback
+        window.addEventListener('load', addCalendarIcon, false);
+        // Display the body after our js and css has finished loading
+        jQuery('body').css('visibility', 'inherit')
+      });
     }
 
     function addJQuery(cb){
       var currentElement = document.currentScript;
-      var scriptNode = document.createElement('script');
-      scriptNode.setAttribute('src', 'https://code.jquery.com/jquery-3.4.1.min.js');
-      scriptNode.setAttribute('integrity', 'sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=');
-      scriptNode.setAttribute('crossorigin', 'anonymous');
-      scriptNode.setAttribute('async', 'false');
-      scriptNode.onload = cb;
-      currentElement.parentNode.insertBefore(scriptNode, currentElement.nextSibling);
+      var loadJQueryNode = document.createElement('script');
+      loadJQueryNode.setAttribute('src', 'https://code.jquery.com/jquery-3.4.1.min.js');
+      loadJQueryNode.setAttribute('integrity', 'sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=');
+      loadJQueryNode.setAttribute('crossorigin', 'anonymous');
+      loadJQueryNode.setAttribute('async', 'false');
+      loadJQueryNode.onload = cb;
+      currentElement.parentNode.insertBefore(loadJQueryNode, currentElement.nextSibling);
     }
 
     /*
