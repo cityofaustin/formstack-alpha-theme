@@ -587,12 +587,34 @@ $side-modal-padding: 3.2rem;
   background: none;
   margin-top: 1rem !important;
 
+  // Change email input border color if there is an error
+  & + .fs-form-input.fs-form-dialog__password {
+    border-color: $validation-red !important;
+  }
+
   // Remove empty space when its hidden
   &.hidden {
     margin-top: 0 !important;
     position: absolute;
+
+    // Don't change email input border color if error is hidden
+    & + .fs-form-input.fs-form-dialog__password {
+      border-color: inherit !important;
+    }
   }
 }
+
+// For the little (!) icon
+.coa-error-icon {
+  position: fixed;
+  margin-left: -3rem;
+  margin-top: -2px;
+}
+
+// // Email input needs to be red when there's an error
+// .fs-thick-indicators.fs-thick-indicators--style_error + .fs-form-input.fs-form-dialog__password {
+//   border-color: $validation-red !important;
+// }
 
 // Email input
 .fs-form-input.fs-form-dialog__password {

@@ -1,6 +1,9 @@
 $ = jQuery;
 
 function formatSaveAndResumePage() {
+  // Change copy for title
+  $('.module-main__dialog-top-left').text("Save and resume later");
+
   // Remove "Your Email Address" placeholder text
   $('.fs-form-input.fs-form-dialog__password').removeAttr('placeholder');
 
@@ -33,8 +36,14 @@ function formatSaveAndResumePage() {
   var errorMessageContainer = $('.fs-thick-indicators.fs-thick-indicators--style_error')
   errorMessageContainer.detach().insertBefore(emailInput);
 
-  // Remove Formstack content and svg from errorMessageContainer
+  // Use material icon for error message
   errorMessageContainer.empty()
-  errorMessageContainer.text("Please enter an email address.")
+  errorMessageContainer.append(
+    $("<i/>", {
+      "class": "material-icons coa-error-icon",
+      "text": "error_outline",
+    })
+  )
+  errorMessageContainer.append("<div>Please enter an email address.</div>")
 }
 formatSaveAndResumePage();
