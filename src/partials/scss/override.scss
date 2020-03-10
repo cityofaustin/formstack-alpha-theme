@@ -23,9 +23,12 @@ legend {
   width: 100%;
 }
 
-.fsBody {
+.fsBody, .fsBody input {
   font-style: normal;
   font-weight: normal;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: $black-text;
+  font-size: 1.6rem;
 }
 
 .fsBody .fsForm {
@@ -103,7 +106,8 @@ legend {
 .fsRowBody input[type='text'].fsRequired,
 .fsRowBody input[type='email'].fsRequired,
 .fsRowBody input[type='number'].fsRequired,
-.fsRowBody input[type='tel'].fsRequired {
+.fsRowBody input[type='tel'].fsRequired,
+.fs-form-input.fs-form-dialog__password {
   @extend .coa-field;
   height: 4.8rem;
   padding: 12px 10px;
@@ -498,6 +502,61 @@ $side-modal-padding: 3.2rem;
 
 // "Save and get link" button
 .fs-btn2.fs-btn2--style_create {
+  background: $science-blue;
+  &:hover {
+    background-color: $hover-blue;
+  }
+}
+
+/********/
+/* Save and Resume Confirmation Page */
+/********/
+// Page container
+.fs--grid-2-8 {
+  width: auto;
+}
+.fs--grid-4-8 {
+  width: auto;
+  padding: 2rem;
+  float: none !important;
+  @include formstack-mobile {
+    width: auto;
+    margin: 0 2rem;
+  }
+}
+
+// Page Title
+.module-main__dialog-top-left {
+  font-size: 3.2rem;
+  padding-bottom: 1rem;
+}
+
+// "Without the link..." container
+.fs-thin-indicators.fs-thin-indicators--style_error {
+  border: none;
+  background: #fef0c8;
+}
+
+// "Without the link..." text
+.fs-thin-indicators .fs-thin-indicators__content {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: $black-text;
+  padding: 12px 10px;
+}
+
+// "Want us to email you this link?"
+.fs--mt50 {
+  margin: auto !important;
+}
+
+// "Send save and resume link" container
+.fs--style_center {
+  text-align: left !important;
+}
+
+// "Send save and resume link" button
+input.fs-btn2.fs-btn2--state_active.fs-btn2--style_link {
   background: $science-blue;
   &:hover {
     background-color: $hover-blue;
