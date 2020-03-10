@@ -1,9 +1,7 @@
-$ = jQuery;
-
 // Moves helper text from below its field to above its field
-var helperTexts = $(".fsSupporting");
+var helperTexts = jQuery(".fsSupporting");
 for (i=0; i < helperTexts.length; i++) {
-  var helperText = $(helperTexts[i]);
+  var helperText = jQuery(helperTexts[i]);
   var parent = helperText.parent();
   helperText.detach();
   var label = parent.children('.fsLabel');
