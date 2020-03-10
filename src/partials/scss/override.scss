@@ -5,8 +5,9 @@
 /********/
 $black-text: #212121;
 $white: #ffffff;
-$science-blue: #0050D8;
+$primary-blue: #0050D8;
 $hover-blue: #2672de;
+$validation-red: #d63e04;
 
 /********/
 /* Body */
@@ -69,7 +70,7 @@ legend {
 /********/
 /* Field Labels */
 /********/
-.fsBody .fsLabel {
+.coa-label {
   color: $black-text;
   border-color: #171717;
   font-size: 1.8rem;
@@ -78,10 +79,14 @@ legend {
   margin-bottom: 0.8rem;
 }
 
+.fsBody .fsLabel {
+  @extend .coa-label;
+}
+
 .fsRequiredMarker {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #d63e04;
+  color: $validation-red;
   // Commenting this out as per https://github.com/cityofaustin/techstack/issues/3718#issuecomment-580518575
 //   margin-left: 1rem !important; // override Formstack
 }
@@ -97,6 +102,12 @@ legend {
   line-height: normal; // prevent letters from getting cut off
 }
 
+.coa-input-field {
+  @extend .coa-field;
+  height: 4.8rem;
+  padding: 12px 10px;
+}
+
 // Specificity is required to override the default Formstack styles
 .fsRowBody input[type='text'],
 .fsRowBody input[type='email'],
@@ -106,11 +117,8 @@ legend {
 .fsRowBody input[type='text'].fsRequired,
 .fsRowBody input[type='email'].fsRequired,
 .fsRowBody input[type='number'].fsRequired,
-.fsRowBody input[type='tel'].fsRequired,
-.fs-form-input.fs-form-dialog__password {
-  @extend .coa-field;
-  height: 4.8rem;
-  padding: 12px 10px;
+.fsRowBody input[type='tel'].fsRequired {
+  @extend .coa-input-field;
 }
 
 .fsForm select,
@@ -154,12 +162,12 @@ legend {
 }
 
 .fsRowBody input[type='checkbox']:checked:before {
-  border-color: $science-blue;
-  background-color: $science-blue;
+  border-color: $primary-blue;
+  background-color: $primary-blue;
 }
 
 .fsRowBody input[type='radio']:checked:before {
-  border-color: $science-blue;
+  border-color: $primary-blue;
 }
 
 // Formstack's smallest breakpoint
@@ -249,13 +257,17 @@ label.fsOptionLabel {
 /********/
 /* Helper Text */
 /********/
-.fsFieldCell > .fsSupporting,
-.fieldset-content > .fsSupporting,
-.fsBody .fsSubField label {
+.coa-helper-text {
   font-size: 1.6rem;
   line-height: 2rem;
   color: #3d4551;
   margin-bottom: 1rem;
+}
+
+.fsFieldCell > .fsSupporting,
+.fieldset-content > .fsSupporting,
+.fsBody .fsSubField label {
+  @extend .coa-helper-text;
 }
 
 /*
@@ -282,11 +294,15 @@ label.fsOptionLabel {
 /********/
 /* Error Handling */
 /********/
-div.fsError {
-  color: #d63e04;
+.coa-error-text {
+  color: $validation-red;
   font-size: 1.6rem;
   line-height: 2rem;
   text-align: left;
+}
+
+div.fsError {
+  @extend .coa-error-text;
 
   strong {
     display: block;
@@ -302,13 +318,13 @@ div.fsError {
   textarea.fsRequired,
   .fsSignature.fsRequired {
     @extend .coa-field;
-    border-color: #d63e04 !important; /* Need to Override Formstack's !important css */
+    border-color: $validation-red !important; /* Need to Override Formstack's !important css */
   }
 
   .fsLabel,
   .fsRequiredLabel,
   .fsRequiredMarker {
-    color: #d63e04 !important;
+    color: $validation-red !important;
   }
 
   .fsMatrix,
@@ -337,9 +353,9 @@ div.fsError {
   @include coa-button;
   border-width: 0.2rem;
   background-color: #d9e8f6 !important;
-  color: $science-blue !important;
+  color: $primary-blue !important;
   &:hover {
-    background-color: $science-blue !important;
+    background-color: $primary-blue !important;
     color: $white !important;
   }
 }
@@ -355,7 +371,7 @@ div.fsError {
 
 .fsSubmitButton {
   @include coa-button;
-  background-color: $science-blue !important;
+  background-color: $primary-blue !important;
   color: $white !important;
   &:hover {
     background-color: $hover-blue !important;
@@ -420,7 +436,7 @@ span.fsFull {
 /********/
 .coa-calendar-icon {
   cursor: pointer;
-  color: $science-blue;
+  color: $primary-blue;
   font-size: 3rem;
   line-height: 5rem;
   margin-left: 1rem;
@@ -502,7 +518,7 @@ $side-modal-padding: 3.2rem;
 
 // "Save and get link" button
 .fs-btn2.fs-btn2--style_create {
-  background: $science-blue;
+  background: $primary-blue;
   &:hover {
     background-color: $hover-blue;
   }
@@ -517,11 +533,12 @@ $side-modal-padding: 3.2rem;
 }
 .fs--grid-4-8 {
   width: auto;
+  max-width: 700px;
+  margin: auto;
   padding: 2rem;
   float: none !important;
   @include formstack-mobile {
     width: auto;
-    margin: 0 2rem;
   }
 }
 
@@ -545,19 +562,47 @@ $side-modal-padding: 3.2rem;
   padding: 12px 10px;
 }
 
-// "Want us to email you this link?"
-.fs--mt50 {
-  margin: auto !important;
-}
-
 // "Send save and resume link" container
 .fs--style_center {
   text-align: left !important;
 }
 
+// Email input label
+.fsBody label.coa-save-and-resume-label {
+  @extend .coa-label;
+  margin-bottom: 0rem;
+}
+
+// Email input helper text
+.coa-save-and-resume-helper-text {
+  @extend .coa-helper-text;
+  margin-bottom: 0rem; // Let email input handle margins because we have field-level error messages
+}
+
+// Error Message Container
+.fs-thick-indicators.fs-thick-indicators--style_error {
+  @extend .coa-error-text;
+  font-weight: 700;
+  border: none;
+  background: none;
+  margin-top: 1rem !important;
+
+  // Remove empty space when its hidden
+  &.hidden {
+    margin-top: 0 !important;
+    position: absolute;
+  }
+}
+
+// Email input
+.fs-form-input.fs-form-dialog__password {
+  @extend .coa-input-field;
+  margin-top: 1rem;
+}
+
 // "Send save and resume link" button
 input.fs-btn2.fs-btn2--state_active.fs-btn2--style_link {
-  background: $science-blue;
+  background: $primary-blue;
   &:hover {
     background-color: $hover-blue;
   }
