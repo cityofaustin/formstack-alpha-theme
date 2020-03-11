@@ -13,19 +13,23 @@ function formatSaveAndResumePage() {
   // Make a better email input label
   var oldEmailLabel = jQuery('.fs-form-label.fs-form-dialog__password-label');
   oldEmailLabel.remove();
-  var emailInput = jQuery('.fs-form-input.fs-form-dialog__password');
-  emailInput.attr('aria-required', "true")
-  var newEmailLabel = jQuery( "<label/>", {
-    "class": "coa-save-and-resume-label",
-    "for": "email",
-    "text": "Want us to email you this link?",
-  })
-  var newEmailHelperText = jQuery( "<div/>", {
-    "class": "coa-save-and-resume-helper-text",
-    "text": "Enter your email below and click 'Send save and resume link'.",
-  })
-  newEmailLabel.insertBefore(emailInput);
-  newEmailHelperText.insertBefore(emailInput);
+  // Before we get to the "Save and Resume" Page, the modal (.fs-form-input.fs-form-dialog__password) will contain a hidden email input (with .fs-form-dialog--hidden)
+  // We don't want to add new labels to the hidden field on the modal
+  var emailInput = jQuery('.fs-form-input.fs-form-dialog__password:not(.fs-form-dialog--hidden)');
+  if (emailInput.length) {
+    emailInput.attr('aria-required', "true")
+    var newEmailLabel = jQuery( "<label/>", {
+      "class": "coa-save-and-resume-label",
+      "for": "email",
+      "text": "Want us to email you this link?",
+    })
+    var newEmailHelperText = jQuery( "<div/>", {
+      "class": "coa-save-and-resume-helper-text",
+      "text": "Enter your email below and click 'Send save and resume link'.",
+    })
+    newEmailLabel.insertBefore(emailInput);
+    newEmailHelperText.insertBefore(emailInput);
+  }
 
   // Add Error message to before email Input field
   var errorMessageContainer = jQuery('.fs-thick-indicators.fs-thick-indicators--style_error')

@@ -546,12 +546,23 @@ $side-modal-padding: 3.2rem;
 .module-main__dialog-top-left {
   font-size: 3.2rem;
   padding-bottom: 1rem;
+
+  @include formstack-sm {
+    font-size: 2.2rem;
+  }
+}
+
+// The "link below", for mobile formatting
+.fs-module-main__message--initial > p {
+  word-break: break-word;
 }
 
 // "Without the link..." container
 .fs-thin-indicators.fs-thin-indicators--style_error {
   border: none;
   background: #fef0c8;
+  padding: 1.6rem;
+  margin-bottom: 3rem !important;
 }
 
 // "Without the link..." text
@@ -559,7 +570,7 @@ $side-modal-padding: 3.2rem;
   font-size: 1.6rem;
   line-height: 2rem;
   color: $black-text;
-  padding: 12px 10px;
+  padding: 0px;
 }
 
 // "Send save and resume link" container
@@ -622,11 +633,6 @@ $side-modal-padding: 3.2rem;
   margin-top: -2px;
 }
 
-// // Email input needs to be red when there's an error
-// .fs-thick-indicators.fs-thick-indicators--style_error + .fs-form-input.fs-form-dialog__password {
-//   border-color: $validation-red !important;
-// }
-
 // Email input
 .fs-form-input.fs-form-dialog__password {
   @extend .coa-input-field;
@@ -638,5 +644,8 @@ input.fs-btn2.fs-btn2--state_active.fs-btn2--style_link {
   background: $primary-blue;
   &:hover {
     background-color: $hover-blue;
+  }
+  @include formstack-sm {
+    width: 100%;
   }
 }
