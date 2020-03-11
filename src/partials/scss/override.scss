@@ -626,6 +626,15 @@ $side-modal-padding: 3.2rem;
   }
 }
 
+// Success Message Container
+// (unused by Formstack as far as I can tell, but it still causes dead whitespace)
+.fs-thick-indicators.fs-thick-indicators--style_success {
+  &.hidden {
+    margin-top: 0 !important;
+    position: absolute;
+  }
+}
+
 // For the little (!) icon
 .coa-error-icon {
   position: absolute;
