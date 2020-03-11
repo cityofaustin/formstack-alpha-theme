@@ -14,8 +14,7 @@ function formatSaveAndResumePage() {
   var oldEmailLabel = jQuery('.fs-form-label.fs-form-dialog__password-label');
   oldEmailLabel.remove();
   var emailInput = jQuery('.fs-form-input.fs-form-dialog__password');
-  emailInput
-    .attr('aria-required', "true")
+  emailInput.attr('aria-required', "true")
   var newEmailLabel = jQuery( "<label/>", {
     "class": "coa-save-and-resume-label",
     "for": "email",

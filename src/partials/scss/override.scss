@@ -579,6 +579,17 @@ $side-modal-padding: 3.2rem;
   margin-bottom: 0rem; // Let email input handle margins because we have field-level error messages
 }
 
+// Hide custom email input labels when "secondary" message is no longer hidden.
+// When "secondary" message appears, that means we're now on the "Resend email" screen.
+.fs-module-main__message--secondary:not(.hidden) {
+  & + .coa-save-and-resume-label {
+    display: none;
+    & + .coa-save-and-resume-helper-text {
+      display: none;
+    }
+  }
+}
+
 // Error Message Container
 .fs-thick-indicators.fs-thick-indicators--style_error {
   @extend .coa-error-text;
