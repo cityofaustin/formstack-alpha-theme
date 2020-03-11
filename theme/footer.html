@@ -99,6 +99,8 @@
         
         // Can only modify calendar icon after Formstack's 'load' callback
         window.addEventListener('load', addCalendarIcon, false);
+        // Change copy on "Save and Resume" Button
+        jQuery("div.fsSaveIncomplete>a").text("Save and resume later")
         function formatSaveAndResumePage() {
           // Change copy for title
           jQuery('.module-main__dialog-top-left').text("Save and resume later");

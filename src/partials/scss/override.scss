@@ -457,6 +457,20 @@ span.fsFull {
 }
 
 /********/
+/* Save and Resume Button */
+/********/
+div.fsSaveIncomplete {
+  background: #F6F6F6;
+  &:hover {
+    cursor: pointer;
+  }
+  &>a {
+    text-decoration: none;
+    color: $black-text;
+  }
+}
+
+/********/
 /* Save and Resume Modal */
 /********/
 $side-modal-padding: 3.2rem;
@@ -476,7 +490,7 @@ $side-modal-padding: 3.2rem;
   padding: 2.8rem $side-modal-padding 0 $side-modal-padding;
 
   color: $black-text;
-  font-size: 3.2rem;
+  font-size: 2.4rem;
   font-weight: bold;
   letter-spacing: 0.25px;
 }
@@ -486,9 +500,8 @@ $side-modal-padding: 3.2rem;
   background: none;
   border: none;
   padding: 0 $side-modal-padding 3.2rem $side-modal-padding;
-
   color: $black-text;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   letter-spacing: 0.15px;
 }
 
