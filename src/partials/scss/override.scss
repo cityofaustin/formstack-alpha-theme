@@ -628,9 +628,24 @@ $side-modal-padding: 3.2rem;
 
 // For the little (!) icon
 .coa-error-icon {
-  position: fixed;
+  position: absolute;
   margin-left: -3rem;
   margin-top: -2px;
+
+  @include formstack-sm {
+    position: inherit;
+    float: left;
+    margin-right: .5rem;
+    margin-left: 0rem;
+  }
+}
+
+// Overflow styles required for our little (!) icon to show up
+.fs--grid {
+  overflow: visible;
+}
+.fs-thick-indicators.fs-thick-indicators--style_error {
+  overflow: visible;
 }
 
 // Email input
