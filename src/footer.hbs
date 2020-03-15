@@ -18,10 +18,10 @@
         {{> editPaginationButtons }}
         {{> moveHelperText }}
         {{> removeIframeMargins }}
-        {{> translate }}
         {{> addCalendarIcon }}
-        {{> saveAndResumeButton }}
         {{> formatSaveAndResumePage }}
+        // translate must be run only after new elements have been added
+        {{> translate }}
         // renderBody only when you're done with all of your other js transformation
         {{> renderBody }}
       });

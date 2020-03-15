@@ -1,7 +1,4 @@
 function formatSaveAndResumePage() {
-  // Change copy for title
-  jQuery('.module-main__dialog-top-left').text("Save and resume later");
-
   // Remove "Your Email Address" placeholder text
   jQuery('.fs-form-input.fs-form-dialog__password').removeAttr('placeholder');
 
@@ -18,14 +15,13 @@ function formatSaveAndResumePage() {
   var emailInput = jQuery('.fs-form-input.fs-form-dialog__password:not(.fs-form-dialog--hidden)');
   if (emailInput.length) {
     emailInput.attr('aria-required', "true")
+    // Text is added by "translate.js"
     var newEmailLabel = jQuery( "<label/>", {
       "class": "coa-save-and-resume-label",
       "for": "email",
-      "text": "Want us to email you this link?",
     })
     var newEmailHelperText = jQuery( "<div/>", {
       "class": "coa-save-and-resume-helper-text",
-      "text": "Enter your email below and click 'Send save and resume link'.",
     })
     newEmailLabel.insertBefore(emailInput);
     newEmailHelperText.insertBefore(emailInput);
@@ -43,6 +39,6 @@ function formatSaveAndResumePage() {
       "text": "error_outline",
     })
   )
-  errorMessageContainer.append("<div>Please enter an email address.</div>")
+  errorMessageContainer.append("<div class='coa-save-and-resume-error-message'></div>")
 }
 formatSaveAndResumePage();

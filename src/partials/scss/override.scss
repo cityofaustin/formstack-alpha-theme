@@ -463,10 +463,11 @@ div.fsSaveIncomplete {
   background: #F6F6F6;
   &:hover {
     cursor: pointer;
+    background: #E6E6E6;
   }
   &>a {
     text-decoration: none;
-    color: $black-text;
+    color: $primary-blue;
   }
 }
 
@@ -673,7 +674,13 @@ $side-modal-padding: 3.2rem;
 // Email input
 .fs-form-input.fs-form-dialog__password {
   @extend .coa-input-field;
+  font-size: 1.6rem;
   margin-top: 1rem;
+}
+
+// Buttons on "Save and Resume" Page
+.fsBody input {
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 // "Send save and resume link" button
