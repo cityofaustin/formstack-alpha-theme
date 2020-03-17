@@ -1,11 +1,9 @@
-$ = jQuery;
-
 // Add Calendar Material Icon for jQuery datepicker
 function addCalendarIcon() {
-  $('.fsCalendar').each(function(i) {
-    var calendarLink = $(this);
-    var calendarTrigger = $(calendarLink.siblings('.ui-datepicker-trigger'));
-    var newCalendarIcon = $('<i></i>')
+  jQuery('.fsCalendar').each(function(i) {
+    var calendarLink = jQuery(this);
+    var calendarTrigger = jQuery(calendarLink.siblings('.ui-datepicker-trigger'));
+    var newCalendarIcon = jQuery('<i></i>')
       .addClass("material-icons coa-calendar-icon")
       .text("calendar_today")
       .attr({

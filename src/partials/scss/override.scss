@@ -1,6 +1,15 @@
 /* This file contains our overrides to default Formstack styles. */
 
 /********/
+/* Variables */
+/********/
+$black-text: #212121;
+$white: #ffffff;
+$primary-blue: #0050D8;
+$hover-blue: #2672de;
+$validation-red: #d63e04;
+
+/********/
 /* Body */
 /********/
 html {
@@ -18,6 +27,9 @@ legend {
 .fsBody {
   font-style: normal;
   font-weight: normal;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: $black-text;
+  font-size: 1.6rem;
 }
 
 .fsBody .fsForm {
@@ -51,15 +63,15 @@ legend {
   text-align: left;
   font-size: 3.2rem;
   font-weight: 400;
-  color: #212121;
+  color: $black-text;
   line-height: 4rem;
 }
 
 /********/
 /* Field Labels */
 /********/
-.fsBody .fsLabel {
-  color: #212121;
+.coa-label {
+  color: $black-text;
   border-color: #171717;
   font-size: 1.8rem;
   font-weight: 700;
@@ -67,10 +79,14 @@ legend {
   margin-bottom: 0.8rem;
 }
 
+.fsBody .fsLabel {
+  @extend .coa-label;
+}
+
 .fsRequiredMarker {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #d63e04;
+  color: $validation-red;
   // Commenting this out as per https://github.com/cityofaustin/techstack/issues/3718#issuecomment-580518575
 //   margin-left: 1rem !important; // override Formstack
 }
@@ -86,6 +102,12 @@ legend {
   line-height: normal; // prevent letters from getting cut off
 }
 
+.coa-input-field {
+  @extend .coa-field;
+  height: 4.8rem;
+  padding: 12px 10px;
+}
+
 // Specificity is required to override the default Formstack styles
 .fsRowBody input[type='text'],
 .fsRowBody input[type='email'],
@@ -96,9 +118,7 @@ legend {
 .fsRowBody input[type='email'].fsRequired,
 .fsRowBody input[type='number'].fsRequired,
 .fsRowBody input[type='tel'].fsRequired {
-  @extend .coa-field;
-  height: 4.8rem;
-  padding: 12px 10px;
+  @extend .coa-input-field;
 }
 
 .fsForm select,
@@ -142,12 +162,12 @@ legend {
 }
 
 .fsRowBody input[type='checkbox']:checked:before {
-  border-color: #0050d8;
-  background-color: #0050d8;
+  border-color: $primary-blue;
+  background-color: $primary-blue;
 }
 
 .fsRowBody input[type='radio']:checked:before {
-  border-color: #0050d8;
+  border-color: $primary-blue;
 }
 
 // Formstack's smallest breakpoint
@@ -160,13 +180,13 @@ legend {
 label.fsOptionLabel {
   font-size: 1.6rem;
   line-height: 2rem;
-  color: #212121;
+  color: $black-text;
 
   @include formstack-sm {
     border: 2px solid #000;
     border-radius: 4px;
     background-color: #f1f3f6;
-    color: #212121;
+    color: $black-text;
   }
 }
 
@@ -237,13 +257,17 @@ label.fsOptionLabel {
 /********/
 /* Helper Text */
 /********/
-.fsFieldCell > .fsSupporting,
-.fieldset-content > .fsSupporting,
-.fsBody .fsSubField label {
+.coa-helper-text {
   font-size: 1.6rem;
   line-height: 2rem;
   color: #3d4551;
   margin-bottom: 1rem;
+}
+
+.fsFieldCell > .fsSupporting,
+.fieldset-content > .fsSupporting,
+.fsBody .fsSubField label {
+  @extend .coa-helper-text;
 }
 
 /*
@@ -270,11 +294,15 @@ label.fsOptionLabel {
 /********/
 /* Error Handling */
 /********/
-div.fsError {
-  color: #d63e04;
+.coa-error-text {
+  color: $validation-red;
   font-size: 1.6rem;
   line-height: 2rem;
   text-align: left;
+}
+
+div.fsError {
+  @extend .coa-error-text;
 
   strong {
     display: block;
@@ -290,13 +318,13 @@ div.fsError {
   textarea.fsRequired,
   .fsSignature.fsRequired {
     @extend .coa-field;
-    border-color: #d63e04 !important; /* Need to Override Formstack's !important css */
+    border-color: $validation-red !important; /* Need to Override Formstack's !important css */
   }
 
   .fsLabel,
   .fsRequiredLabel,
   .fsRequiredMarker {
-    color: #d63e04 !important;
+    color: $validation-red !important;
   }
 
   .fsMatrix,
@@ -325,15 +353,15 @@ div.fsError {
   @include coa-button;
   border-width: 0.2rem;
   background-color: #d9e8f6 !important;
-  color: #0050d8 !important;
+  color: $primary-blue !important;
   &:hover {
-    background-color: #0050d8 !important;
-    color: #ffffff !important;
+    background-color: $primary-blue !important;
+    color: $white !important;
   }
 }
 
-// Breakpoint used by formstack to set mobile pagination buttons
-@mixin formstack-mobile-pagination {
+// Breakpoint used by formstack to determine when to set mobile styling
+@mixin formstack-mobile {
   @media all and (max-width: 699px),
     all and (device-height: 1024px) and (device-width: 768px) and (orientation: portrait),
     all and (device-height: 1024px) and (device-width: 768px) and (orientation: landscape) {
@@ -343,16 +371,16 @@ div.fsError {
 
 .fsSubmitButton {
   @include coa-button;
-  background-color: #0050d8 !important;
-  color: #ffffff !important;
+  background-color: $primary-blue !important;
+  color: $white !important;
   &:hover {
-    background-color: #2672de !important;
+    background-color: $hover-blue !important;
   }
 }
 
 .fsPagination .fsSubmitButton,
 .fsPagination .fsSubmitMultipage {
-  @include formstack-mobile-pagination {
+  @include formstack-mobile {
     margin-top: 0px !important;
     width: 14.5rem;
   }
@@ -361,13 +389,13 @@ div.fsError {
 .fsPagination .fsPreviousButton,
 .fsPagination .fsNextButton {
   @include coa-pagination-button;
-  @include formstack-mobile-pagination {
+  @include formstack-mobile {
     @include coa-pagination-button;
   }
 }
 
 span.fsFull {
-  @include formstack-mobile-pagination {
+  @include formstack-mobile {
     display: inherit;
   }
 }
@@ -377,7 +405,7 @@ span.fsFull {
 .fsPagination .fsNextButton:before,
 .rtl .fsPagination .fsPreviousButton:before,
 .rtl .fsPagination .fsNextButton:before {
-  @include formstack-mobile-pagination {
+  @include formstack-mobile {
     content: none;
   }
 }
@@ -388,7 +416,7 @@ span.fsFull {
 .fsSectionText p {
   font-size: 1.7rem;
   font-weight: 400;
-  color: #212121;
+  color: $black-text;
   font-family: 'IBM Plex Sans', sans-serif;
   line-height:2.8rem;
 }
@@ -398,7 +426,7 @@ span.fsFull {
   font-family: sans-serif;
   text-align: center;
   font-weight: 400;
-  color: #212121;
+  color: $black-text;
   font-family: 'IBM Plex Sans', sans-serif;
   line-height:2.8rem;
 }
@@ -408,7 +436,7 @@ span.fsFull {
 /********/
 .coa-calendar-icon {
   cursor: pointer;
-  color: #0050d8;
+  color: $primary-blue;
   font-size: 3rem;
   line-height: 5rem;
   margin-left: 1rem;
@@ -426,4 +454,242 @@ span.fsFull {
   left: 0;
   right: 0;
   bottom: 100px;
+}
+
+/********/
+/* Save and Resume Button */
+/********/
+div.fsSaveIncomplete {
+  background: #F6F6F6;
+  &:hover {
+    cursor: pointer;
+    background: #E6E6E6;
+  }
+  &>a {
+    text-decoration: none;
+    color: $primary-blue;
+  }
+}
+
+/********/
+/* Save and Resume Modal */
+/********/
+$side-modal-padding: 3.2rem;
+
+// Modal Container Desktop
+.fs-modal-small .fs-ngdialog-content {
+  width: 660px;
+
+  @include formstack-mobile {
+    width: auto;
+    margin: 0 2rem;
+  }
+}
+
+// Top part of modal
+.fs-modal-small .fs-ngdialog-content .fs-form-dialog__title {
+  padding: 2.8rem $side-modal-padding 0 $side-modal-padding;
+
+  color: $black-text;
+  font-size: 2.4rem;
+  font-weight: bold;
+  letter-spacing: 0.25px;
+}
+
+// Middle part of modal
+.fs-modal-small .fs-ngdialog-content .fs-modal__middle {
+  background: none;
+  border: none;
+  padding: 0 $side-modal-padding 3.2rem $side-modal-padding;
+  color: $black-text;
+  font-size: 1.8rem;
+  letter-spacing: 0.15px;
+}
+
+// Bottom part of modal
+.fs-modal-small .fs-ngdialog-content .fs-modal__bottom {
+  background: #f3f3f3;
+  padding: 1.6rem 3.2rem 1.6rem 3.2rem !important;
+}
+
+.fs-btn2.fs-btn2--size_medium {
+  padding: 0 20px;
+  height: 52px;
+  line-height: 52px;
+  font-size: 1.6rem;
+  font-weight: 500 !important;
+}
+
+.fs-btn2.fs-btn2--size_medium .fs-btn2__text {
+  height: auto;
+}
+
+// "Cancel" button
+.fs-btn2.fs-btn2--style_edit-dark {
+  background: $white;
+  color: $black-text;
+}
+
+// "Save and get link" button
+.fs-btn2.fs-btn2--style_create {
+  background: $primary-blue;
+  &:hover {
+    background-color: $hover-blue;
+  }
+}
+
+/********/
+/* Save and Resume Confirmation Page */
+/********/
+// Page container
+.fs--grid-2-8 {
+  width: auto;
+}
+.fs--grid-4-8 {
+  width: auto;
+  max-width: 700px;
+  margin: auto;
+  padding: 2rem;
+  float: none !important;
+  @include formstack-mobile {
+    width: auto;
+  }
+}
+
+// Page Title
+.module-main__dialog-top-left {
+  font-size: 3.2rem;
+  padding-bottom: 1rem;
+
+  @include formstack-sm {
+    font-size: 2.2rem;
+  }
+}
+
+// The "link below", for mobile formatting
+.fs-module-main__message--initial > p {
+  word-break: break-word;
+}
+
+// "Without the link..." container
+.fs-thin-indicators.fs-thin-indicators--style_error {
+  border: none;
+  background: #fef0c8;
+  padding: 1.6rem;
+  margin-bottom: 3rem !important;
+}
+
+// "Without the link..." text
+.fs-thin-indicators .fs-thin-indicators__content {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: $black-text;
+  padding: 0px;
+}
+
+// "Send save and resume link" container
+.fs--style_center {
+  text-align: left !important;
+}
+
+// Email input label
+.fsBody label.coa-save-and-resume-label {
+  @extend .coa-label;
+  margin-bottom: 0rem;
+}
+
+// Email input helper text
+.coa-save-and-resume-helper-text {
+  @extend .coa-helper-text;
+  margin-bottom: 0rem; // Let email input handle margins because we have field-level error messages
+}
+
+// Hide custom email input labels when "secondary" message is no longer hidden.
+// When "secondary" message appears, that means we're now on the "Resend email" screen.
+.fs-module-main__message--secondary:not(.hidden) {
+  & + .coa-save-and-resume-label {
+    display: none;
+    & + .coa-save-and-resume-helper-text {
+      display: none;
+    }
+  }
+}
+
+// Error Message Container
+.fs-thick-indicators.fs-thick-indicators--style_error {
+  @extend .coa-error-text;
+  font-weight: 700;
+  border: none;
+  background: none;
+  margin-top: 1rem !important;
+
+  // Change email input border color if there is an error
+  & + .fs-form-input.fs-form-dialog__password {
+    border-color: $validation-red !important;
+  }
+
+  // Remove empty space when its hidden
+  &.hidden {
+    margin-top: 0 !important;
+    position: absolute;
+
+    // Don't change email input border color if error is hidden
+    & + .fs-form-input.fs-form-dialog__password {
+      border-color: inherit !important;
+    }
+  }
+}
+
+// Success Message Container
+// (unused by Formstack as far as I can tell, but it still causes dead whitespace)
+.fs-thick-indicators.fs-thick-indicators--style_success {
+  &.hidden {
+    margin-top: 0 !important;
+    position: absolute;
+  }
+}
+
+// For the little (!) icon
+.coa-error-icon {
+  position: absolute;
+  margin-left: -3rem;
+  margin-top: -2px;
+
+  @include formstack-sm {
+    position: inherit;
+    float: left;
+    margin-right: .5rem;
+    margin-left: 0rem;
+  }
+}
+
+// Overflow styles required for our little (!) icon to show up
+.fs--grid {
+  overflow: visible;
+}
+.fs-thick-indicators.fs-thick-indicators--style_error {
+  overflow: visible;
+}
+
+// Email input
+.fs-form-input.fs-form-dialog__password {
+  @extend .coa-input-field;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+}
+
+// Buttons on "Save and Resume" Page
+.fsBody input {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+// "Send save and resume link" button
+input.fs-btn2.fs-btn2--state_active.fs-btn2--style_link {
+  background: $primary-blue;
+  &:hover {
+    background-color: $hover-blue;
+  }
+  @include formstack-sm {
+    width: 100%;
+  }
 }
