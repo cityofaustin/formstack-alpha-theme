@@ -121,6 +121,12 @@ legend {
   @extend .coa-input-field;
 }
 
+// Signature field needs to maintain its original height
+.fsSignature {
+  height: inherit;
+  padding: 0px;
+}
+
 .fsForm select,
 .fsForm select.fsRequired {
   @extend .coa-field;
